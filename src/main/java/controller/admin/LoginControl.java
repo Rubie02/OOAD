@@ -28,10 +28,10 @@ public class LoginControl extends HttpServlet {
         {
         	request.setAttribute("mess", "Wrong user or password! Please check it again!");
         	request.getRequestDispatcher("/views/admin/login.jsp").forward(request, response);
-        
         }
         else 
         {
+
         	HttpSession session = request.getSession();
         	session.setAttribute("acc", a);
         	request.getRequestDispatcher("home").forward(request, response);

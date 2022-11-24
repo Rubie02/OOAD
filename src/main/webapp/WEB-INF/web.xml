@@ -54,7 +54,7 @@
     <description></description>
     <display-name>LoginControl</display-name>
     <servlet-name>LoginControl</servlet-name>
-    <servlet-class>control.LoginControl</servlet-class>
+    <servlet-class>controller.admin.LoginControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginControl</servlet-name>
@@ -64,7 +64,7 @@
     <description></description>
     <display-name>SignupControl</display-name>
     <servlet-name>SignupControl</servlet-name>
-    <servlet-class>control.SignupControl</servlet-class>
+    <servlet-class>controller.admin.SignupControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SignupControl</servlet-name>

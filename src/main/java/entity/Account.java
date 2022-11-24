@@ -4,14 +4,16 @@ public class Account {
 	private String username;
 	private String password;
 	private int type; // 1 is admin, 0 is customer
+	private String email;
 	public Account() {
 		super();
 	}
-	public Account(String username, String password, int type) {
+	public Account(String username, String password, int type, String email) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.type = type;
+		this.email = email;
 	}
 	public String getUsername() {
 		return username;
@@ -31,4 +33,11 @@ public class Account {
 	public void setType(int type) {
 		this.type = type;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }

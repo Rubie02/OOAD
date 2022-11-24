@@ -13,7 +13,7 @@ public class LoginDaoImpl extends DBConnection implements ILoginDao{
 	ResultSet rs = null;
 	@Override
 	public Account login(String user, String pass) {
-		String query = "SELECT * FROM Logins\r\n"
+		String query = "SELECT * FROM Accounts\r\n"
 				+ "WHERE username = ?\r\n"
 				+ "AND password = ?";
 		try {
@@ -24,7 +24,7 @@ public class LoginDaoImpl extends DBConnection implements ILoginDao{
 			rs = ps.executeQuery();
 			while(rs.next())
 			{
-				return new Account(rs.getString(1),rs.getString(2),rs.getInt(3));
+				return new Account(rs.getString(1),rs.getString(2),rs.getInt(3), rs.getString(4));
 			}
 		}
 		catch (Exception e) {
