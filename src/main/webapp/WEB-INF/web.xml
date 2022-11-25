@@ -5,7 +5,7 @@
     <description></description>
     <display-name>HomeControl</display-name>
     <servlet-name>HomeControl</servlet-name>
-    <servlet-class>control.HomeControl</servlet-class>
+    <servlet-class>controller.admin.HomeControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HomeControl</servlet-name>
@@ -74,7 +74,7 @@
     <description></description>
     <display-name>LogoutControl</display-name>
     <servlet-name>LogoutControl</servlet-name>
-    <servlet-class>control.LogoutControl</servlet-class>
+    <servlet-class>controller.admin.LogoutControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LogoutControl</servlet-name>

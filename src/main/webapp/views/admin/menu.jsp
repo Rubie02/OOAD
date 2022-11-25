@@ -10,19 +10,19 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
-            	<c:if test="${sessionScope.acc.isAdmin == 1 }">
+            	<c:if test="${sessionScope.acc.type == 1 }">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Manager Account</a>
                 </li>
                 </c:if>
-                <c:if test="${sessionScope.acc.isSell == 1 }">
+                <c:if test="${sessionScope.acc.type == 1 }">
                  <li class="nav-item">
                     <a class="nav-link" href="manager_product">Manager Product</a>
                 </li>
                 </c:if>
                 <c:if test="${sessionScope.acc != null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hello ${sessionScope.acc.user}</a>
+                    <a class="nav-link" href="#">Hello ${sessionScope.acc.username}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout">Logout</a>
@@ -30,7 +30,7 @@
                 </c:if>
                 <c:if test="${sessionScope.acc == null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="/views/admin/login.jsp">Login</a>
+                    <a class="nav-link" href="login">Login</a>
                 </li>
                 </c:if>
             </ul>

@@ -8,8 +8,8 @@
 		</div>
 		<ul class="list-group category_block">
 			<c:forEach items="${listC}" var="o">
-				<li class="list-group-item text-white ${tag == o.cid ? "active":"" }"><a
-					href="category?cid=${o.cid }">${o.cname}</a></li>
+				<li class="list-group-item text-white ${tag == o.cateId ? "active":"" }"><a
+					href="category?cid=${o.cateId }">${o.cateName}</a></li>
 			</c:forEach>
 
 		</ul>
@@ -17,9 +17,9 @@
 	<div class="card bg-light mb-3">
 		<div class="card-header bg-success text-white text-uppercase">New product</div>
 		<div class="card-body">
-			<img class="img-fluid" src="${p.image}" />
-			<h5 class="card-title">${p.name}</h5>
-			<p class="card-text">${p.title}</p>
+			<img class="img-fluid" src="${p.productImage}" />
+			<h5 class="card-title">${p.productName}</h5>
+			<p class="card-text">${p.information}</p>
 			<p class="bloc_left_price">${p.price}$</p>
 		</div>
 	</div>
