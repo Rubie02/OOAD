@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:url value="/css/" var="url"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${url }style.css" rel="stylesheet" type="text/css" />
 <style>
 .gallery-wrap .img-big-wrap img {
 	height: 450px;
@@ -61,7 +62,7 @@
 								<article class="gallery-wrap">
 									<div class="img-big-wrap">
 										<div>
-											<a href="#"><img src="${detail.image}"></a>
+											<a href="#"><img src="${detail.productImage}"></a>
 										</div>
 									</div>
 									<!-- slider-product.// -->
@@ -72,7 +73,7 @@
 							</aside>
 							<aside class="col-sm-7">
 								<article class="card-body p-5">
-									<h3 class="title mb-3">${detail.name}</h3>
+									<h3 class="title mb-3">${detail.productName}</h3>
 
 									<p class="price-detail-wrap">
 										<span class="price h3 text-warning"> <span
@@ -84,7 +85,7 @@
 									<dl class="item-property">
 										<dt>Description</dt>
 										<dd>
-											<p>${detail.description}</p>
+											<p>${detail.information}</p>
 										</dd>
 									</dl>
 									<!--                                        <dl class="param param-feature">

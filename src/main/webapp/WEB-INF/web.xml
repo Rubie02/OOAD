@@ -24,7 +24,7 @@
     <description></description>
     <display-name>CategoryControl</display-name>
     <servlet-name>CategoryControl</servlet-name>
-    <servlet-class>control.CategoryControl</servlet-class>
+    <servlet-class>controller.admin.CategoryControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CategoryControl</servlet-name>
@@ -34,7 +34,7 @@
     <description></description>
     <display-name>DetailControl</display-name>
     <servlet-name>DetailControl</servlet-name>
-    <servlet-class>control.DetailControl</servlet-class>
+    <servlet-class>controller.admin.DetailControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DetailControl</servlet-name>
@@ -44,7 +44,7 @@
     <description></description>
     <display-name>SearchControl</display-name>
     <servlet-name>SearchControl</servlet-name>
-    <servlet-class>control.SearchControl</servlet-class>
+    <servlet-class>controller.admin.SearchControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchControl</servlet-name>
@@ -84,7 +84,7 @@
     <description></description>
     <display-name>ManagerControl</display-name>
     <servlet-name>ManagerControl</servlet-name>
-    <servlet-class>control.ManagerControl</servlet-class>
+    <servlet-class>controller.admin.ManagerControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ManagerControl</servlet-name>
@@ -94,7 +94,7 @@
     <description></description>
     <display-name>DeleteControl</display-name>
     <servlet-name>DeleteControl</servlet-name>
-    <servlet-class>control.DeleteControl</servlet-class>
+    <servlet-class>controller.admin.DeleteControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteControl</servlet-name>
@@ -104,7 +104,7 @@
     <description></description>
     <display-name>AddControl</display-name>
     <servlet-name>AddControl</servlet-name>
-    <servlet-class>control.AddControl</servlet-class>
+    <servlet-class>controller.admin.AddControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddControl</servlet-name>
