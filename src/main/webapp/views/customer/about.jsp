@@ -23,15 +23,15 @@
 
 <header class="header">
 
-    <a href="home.html" class="logo"> <i class="fas fa-shopping-basket"></i> groco </a>
+    <a href="Home" class="logo"> <i class="fas fa-shopping-basket"></i> organic fruit </a>
 
     <nav class="navbar">
-        <a href="home.html">home</a>
-        <a href="shop.html">shop</a>
-        <a href="about.html">about</a>
-        <a href="review.html">review</a>
-        <a href="blog.html">blog</a>
-        <a href="contact.html">contact</a>
+       <a href="Home">home</a>
+        <a href="Shop">shop</a>
+        <a href="About">about</a>
+        <a href="Review">review</a>
+        <a href="Blog">blog</a>
+        <a href="Contact">contact</a>
     </nav>
 
     <div class="icons">
@@ -100,7 +100,7 @@
 
 <div class="heading">
     <h1>about us</h1>
-    <p> <a href="home.html">home >></a> about </p>
+    <p> <a href="Home">home >></a> about </p>
 </div>
 
 <section class="about">
@@ -210,12 +210,12 @@
 
         <div class="box">
             <h3>quick links</h3>
-            <a href="home.html"> <i class="fas fa-arrow-right"></i> home</a>
-            <a href="shop.html"> <i class="fas fa-arrow-right"></i> shop</a>
-            <a href="about.html"> <i class="fas fa-arrow-right"></i> about</a>
-            <a href="review.html"> <i class="fas fa-arrow-right"></i> review</a>
-            <a href="blog.html"> <i class="fas fa-arrow-right"></i> blog</a>
-            <a href="contact.html"> <i class="fas fa-arrow-right"></i> contact</a>
+            <a href="Home"> <i class="fas fa-arrow-right"></i> home</a>
+            <a href="Shop"> <i class="fas fa-arrow-right"></i> shop</a>
+            <a href="About"> <i class="fas fa-arrow-right"></i> about</a>
+            <a href="Review"> <i class="fas fa-arrow-right"></i> review</a>
+            <a href="Blog"> <i class="fas fa-arrow-right"></i> blog</a>
+            <a href="Contact"> <i class="fas fa-arrow-right"></i> contact</a>
         </div>
 
         <div class="box">

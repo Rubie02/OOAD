@@ -14,26 +14,29 @@
                 <li class="nav-item">
                     <a class="nav-link" href="manager_blog">Manager Blog</a>
                 </li>
-                </c:if>
-            	<c:if test="${sessionScope.acc.type == 1 }">
+                <li class="nav-item">
+                    <a class="nav-link" href="manager_product">Manager Product</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Manager Account</a>
                 </li>
-                </c:if>
-                <c:if test="${sessionScope.acc.type == 1 }">
-                 <li class="nav-item">
-                    <a class="nav-link" href="manager_product">Manager Product</a>
-                </li>
+
                 </c:if>
                 <c:if test="${sessionScope.acc != null}">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Hello ${sessionScope.acc.username}</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="blog">Blog</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="logout">Logout</a>
                 </li>
                 </c:if>
                 <c:if test="${sessionScope.acc == null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="blog">Blog</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Login</a>
                 </li>
