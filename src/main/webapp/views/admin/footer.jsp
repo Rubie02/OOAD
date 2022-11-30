@@ -22,16 +22,7 @@
 				</ul>
 			</div>
 
-			<div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
-				<h5>Others links</h5>
-				<hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-				<ul class="list-unstyled">
-					<li><a href="">Link 1</a></li>
-					<li><a href="">Link 2</a></li>
-					<li><a href="">Link 3</a></li>
-					<li><a href="">Link 4</a></li>
-				</ul>
-			</div>
+			
 
 			<div class="col-md-4 col-lg-3 col-xl-3">
 				<h5>Contact</h5>

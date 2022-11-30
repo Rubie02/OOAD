@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:url value="/css/" var="url"></c:url>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="/css/manager.css" rel="stylesheet" type="text/css" />
+<link href="${url }style.css" rel="stylesheet" type="text/css" />
 <style>
 img {
 	width: 200px;
@@ -62,10 +63,7 @@ img {
 								<label>Price</label> <input name="price" type="text"
 									class="form-control" required>
 							</div>
-							<div class="form-group">
-								<label>Title</label>
-								<textarea name="title" class="form-control" required></textarea>
-							</div>
+					
 							<div class="form-group">
 								<label>Description</label>
 								<textarea name="description" class="form-control" required></textarea>

@@ -12,6 +12,11 @@
             <ul class="navbar-nav m-auto">
             	<c:if test="${sessionScope.acc.type == 1 }">
                 <li class="nav-item">
+                    <a class="nav-link" href="manager_blog">Manager Blog</a>
+                </li>
+                </c:if>
+            	<c:if test="${sessionScope.acc.type == 1 }">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Manager Account</a>
                 </li>
                 </c:if>

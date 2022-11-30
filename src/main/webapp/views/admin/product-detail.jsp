@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
+<title>Product</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -77,7 +77,7 @@
 
 									<p class="price-detail-wrap">
 										<span class="price h3 text-warning"> <span
-											class="currency">US $</span><span class="num">${detail.price}</span>
+											class="currency"></span><span class="num">${detail.price} VND</span>
 										</span>
 										<!--<span>/per kg</span>-->
 									</p>
@@ -107,12 +107,7 @@
 											<dl class="param param-inline">
 												<dt>Quantity:</dt>
 												<dd>
-													<select class="form-control form-control-sm"
-														style="width: 70px;">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-													</select>
+													<input type="text" class="form-control" required>
 												</dd>
 											</dl>
 											<!-- item-property .// -->

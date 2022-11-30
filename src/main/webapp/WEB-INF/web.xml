@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>OrganicFruit</display-name>
+  <!-- Admin -->
   <servlet>
     <description></description>
     <display-name>HomeControl</display-name>
@@ -106,8 +107,55 @@
     <servlet-name>AddControl</servlet-name>
     <servlet-class>controller.admin.AddControl</servlet-class>
   </servlet>
+   <servlet>
+    <description></description>
+    <display-name>BlogControl</display-name>
+    <servlet-name>BlogControl</servlet-name>
+    <servlet-class>controller.admin.BlogControl</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>AddControl</servlet-name>
-    <url-pattern>/add</url-pattern>
+    <servlet-name>BlogControl</servlet-name>
+    <url-pattern>/blog</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DetailBlogControl</display-name>
+    <servlet-name>DetailBlogControl</servlet-name>
+    <servlet-class>controller.admin.DetailBlogControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetailBlogControl</servlet-name>
+    <url-pattern>/detailblog</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManagerBlogControl</display-name>
+    <servlet-name>ManagerBlogControl</servlet-name>
+    <servlet-class>controller.admin.ManagerBlogControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagerBlogControl</servlet-name>
+    <url-pattern>/manager_blog</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddBlogControl</display-name>
+    <servlet-name>AddBlogControl</servlet-name>
+    <servlet-class>controller.admin.AddBlogControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddBlogControl</servlet-name>
+    <url-pattern>/add_blog</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteBlogControl</display-name>
+    <servlet-name>DeleteBlogControl</servlet-name>
+    <servlet-class>controller.admin.DeleteBlogControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteBlogControl</servlet-name>
+    <url-pattern>/delete_blog</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

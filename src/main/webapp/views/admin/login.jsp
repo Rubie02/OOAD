@@ -19,8 +19,8 @@
         <div id="logreg-forms">
             <form class="form-signin" action="login" method="post">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
-                <div class="alert alert-danger" role="alert">
-  					<p class= "text-danger">${mess}</p>
+                <div class="" role="">
+  					<p class= "text-danger" role="alert">${mess}</p>
 				</div>
                 <input name="user"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
                 <input name="pass"  type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
