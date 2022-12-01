@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
+    <title>About</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -20,32 +20,35 @@
 <body>
     
 <!-- header section starts  -->
+
 <jsp:include page="/views/customer/commons/header.jsp"></jsp:include>
+
 <!-- header section ends -->
 
 <div class="heading">
-    <h1>our shop</h1>
-    <p> <a href="Home">home >></a> shop </p>
+    <h1>about product</h1>
+    <p> <a href="Home">home >></a> about product </p>
 </div>
 
-<section class="category">
+<section class="about">
 
-    <h1 class="title"> our <span>category</span> <a href="#">view all >></a> </h1>
+    <div class="image">
+        <img src="${detail.productImage}" alt="">
+    </div>
 
-    <div class="box-container">
-	<c:forEach items="${listC}" var="o">
-        <a href="Category?cid=${o.cateId }" class="box">
-            <img src="${urlImage }cat-${o.cateId }.png" alt="">
-            <h3>${o.cateName }</h3>
-        </a>
-    </c:forEach>
+    <div class="content">
+        <span>welcome to our shop</span>
+        <h3>${detail.productName}</h3>
+        <p>${detail.information }</p>
+        <p>Don't hesitate! Add this product to your cart as soon as possible!</p>
+        <a href="#" class="btn">Add to cart</a>
     </div>
 
 </section>
 
 <section class="products">
 
-    <h1 class="title"> our <span>products</span> <a href="Shop">view all >></a> </h1>
+    <h1 class="title"> more <span>products</span> <a href="Shop">view all >></a> </h1>
 
     <div class="box-container">
 	<c:forEach items="${listP}" var="o">

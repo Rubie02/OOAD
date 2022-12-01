@@ -35,7 +35,7 @@ public class CategoryCusControl extends HttpServlet {
         request.setAttribute("listC", listC);
         request.setAttribute("p", last);
         request.setAttribute("tag", cateID);
-        request.getRequestDispatcher("/views/customer/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/customer/shop.jsp").forward(request, response);
     }
 
     @Override

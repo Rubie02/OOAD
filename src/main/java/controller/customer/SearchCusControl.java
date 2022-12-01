@@ -35,7 +35,7 @@ public class SearchCusControl extends HttpServlet {
         request.setAttribute("p", last);
         request.setAttribute("listP", list);
         request.setAttribute("txtS", txtSearch);
-        request.getRequestDispatcher("/views/customer/home.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/customer/shop.jsp").forward(request, response);
         
     }
 

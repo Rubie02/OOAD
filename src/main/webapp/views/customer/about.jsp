@@ -21,80 +21,7 @@
     
 <!-- header section starts  -->
 
-<header class="header">
-
-    <a href="Home" class="logo"> <i class="fas fa-shopping-basket"></i> organic fruit </a>
-
-    <nav class="navbar">
-       <a href="Home">home</a>
-        <a href="Shop">shop</a>
-        <a href="About">about</a>
-        <a href="Review">review</a>
-        <a href="Blog">blog</a>
-        <a href="Contact">contact</a>
-    </nav>
-
-    <div class="icons">
-        <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="search-btn" class="fas fa-search"></div>
-        <div id="cart-btn" class="fas fa-shopping-cart"></div>
-        <div id="login-btn" class="fas fa-user"></div>
-    </div>
-
-    <form action="" class="search-form">
-        <input type="search" placeholder="search here..." id="search-box">
-        <label for="search-box" class="fas fa-search"></label>
-    </form>
-
-    <div class="shopping-cart">
-        <div class="box">
-            <i class="fas fa-times"></i>
-            <img src="${urlImage }cart-1.jpg" alt="">
-            <div class="content">
-                <h3>organic food</h3>
-                <span class="quantity">1</span>
-                <span class="multiply">x</span>
-                <span class="price">$18.99</span>
-            </div>
-        </div>
-        <div class="box">
-            <i class="fas fa-times"></i>
-            <img src="${urlImage }cart-2.jpg" alt="">
-            <div class="content">
-                <h3>organic food</h3>
-                <span class="quantity">1</span>
-                <span class="multiply">x</span>
-                <span class="price">$18.99</span>
-            </div>
-        </div>
-        <div class="box">
-            <i class="fas fa-times"></i>
-            <img src="${urlImage }cart-3.jpg" alt="">
-            <div class="content">
-                <h3>organic food</h3>
-                <span class="quantity">1</span>
-                <span class="multiply">x</span>
-                <span class="price">$18.99</span>
-            </div>
-        </div>
-        <h3 class="total"> total : <span>56.97</span> </h3>
-        <a href="#" class="btn">checkout cart</a>
-    </div>
-
-    <form action="" class="login-form">
-        <h3>login form</h3>
-        <input type="email" placeholder="enter your email" class="box">
-        <input type="password" placeholder="enter your password" class="box">
-        <div class="remember">
-            <input type="checkbox" name="" id="remember-me">
-            <label for="remember-me">remember me</label>
-        </div>
-        <input type="submit" value="login now" class="btn">
-        <p>forget password? <a href="#">click here</a></p>
-        <p>don't have an account? <a href="#">create one</a></p>
-    </form>
-
-</header>
+<jsp:include page="/views/customer/commons/header.jsp"></jsp:include>
 
 <!-- header section ends -->
 
@@ -112,9 +39,9 @@
     <div class="content">
         <span>welcome to our shop</span>
         <h3>fresh and organic groceries</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae vel sequi nostrum quae nobis non quaerat nisi voluptatibus recusandae reprehenderit tempore eligendi, eum quibusdam perferendis dicta, incidunt dolores nemo ex.</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem cumque molestiae blanditiis deleniti aspernatur, ab tempora quisquam sapiente commodi hic.</p>
-        <a href="#" class="btn">read more</a>
+        <p>Organic Fruit is the official website of a clean, healthy fruit and vegetable shop - a clean house is cool, clean vegetables are only available at Organic Fruit. Coming to Organic Fruit's website, you can see the details of each clean and fresh vegetable, tuber and fruit without having to go to the store to see it with your own eyes or worry about the quality of the product. In addition, you can order, pay online and many other attractive gift programs are waiting for you.</p>
+        
+        <a href="Shop" class="btn">shop now</a>
     </div>
 
 </section>
@@ -184,86 +111,11 @@
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- footer section starts  -->
 
-<section class="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <h3>quick links</h3>
-            <a href="Home"> <i class="fas fa-arrow-right"></i> home</a>
-            <a href="Shop"> <i class="fas fa-arrow-right"></i> shop</a>
-            <a href="About"> <i class="fas fa-arrow-right"></i> about</a>
-            <a href="Review"> <i class="fas fa-arrow-right"></i> review</a>
-            <a href="Blog"> <i class="fas fa-arrow-right"></i> blog</a>
-            <a href="Contact"> <i class="fas fa-arrow-right"></i> contact</a>
-        </div>
-
-        <div class="box">
-            <h3>extra links</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my order </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my favorite </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my wishlist </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my account </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> terms or use </a>
-        </div>
-
-        <div class="box">
-            <h3>follow us</h3>
-            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
-            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
-            <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
-            <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
-        </div>
-
-        <div class="box">
-            <h3>newsletter</h3>
-            <p>subscribe for latest updates</p>
-            <form action="">
-                <input type="email" placeholder="enter your email">
-                <input type="submit" value="subscribe" class="btn">
-            </form>
-            <img src="${urlImage }payment.png" class="payment" alt="">
-        </div>
-
-    </div>
-
-</section>
-
-<section class="credit">created by group 16 | all rights reserved!</section>
+<jsp:include page="/views/customer/commons/footer.jsp"></jsp:include>
 
 <!-- footer section ends -->
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- custom css file link  -->

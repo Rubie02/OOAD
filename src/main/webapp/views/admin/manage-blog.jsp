@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:url value="/css/" var="url"></c:url>
+<c:url value="/js/" var="urljs"></c:url>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +122,7 @@ img {
 					<li class="page-item disabled"><a href="#">Previous</a></li>
 					<li class="page-item"><a href="#" class="page-link">1</a></li>
 					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
+					<li class="page-item"><a href="#" class="page-link">3</a></li>
 					<li class="page-item"><a href="#" class="page-link">4</a></li>
 					<li class="page-item"><a href="#" class="page-link">5</a></li>
 					<li class="page-item"><a href="#" class="page-link">Next</a></li>
@@ -225,10 +226,10 @@ img {
 			</div>
 		</div>
 	</div>
-	<script src="js/manager.js" type="text/javascript"></script>
+	<script src="${urljs }manager.js" type="text/javascript"></script>
 	<script>
 		
 	</script>
-	<jsp:include page="/views/admin/footer.jsp"></jsp:include>]
+	<jsp:include page="/views/admin/footer.jsp"></jsp:include>
 </body>
 </html>

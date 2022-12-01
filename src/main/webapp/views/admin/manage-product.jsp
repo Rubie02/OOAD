@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:url value="/css/" var="url"></c:url>
+<c:url value="/js/" var="urljs"></c:url>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +25,7 @@
             }
         </style>
     <body>
+     <jsp:include page="/views/admin/menu.jsp"></jsp:include>
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -190,9 +192,10 @@
                 </div>
             </div>
         </div>
-        <script src="/js/manager.js" type="text/javascript"></script>
+        <script src="${urljs }manager.js" type="text/javascript"></script>
         <script>
                
         </script>
+         <jsp:include page="/views/admin/footer.jsp"></jsp:include>
     </body>
 </html>

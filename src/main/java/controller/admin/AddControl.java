@@ -7,9 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import entity.Account;
 import service.IProductService;
 import service.ProductServiceImpl;
 
@@ -29,8 +27,7 @@ public class AddControl extends HttpServlet {
         String mgf = request.getParameter("mgf");
         String exp = request.getParameter("exp");
         String productImage = request.getParameter("productImage");
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
+
         
         productService.insertProduct(productName, supId, cateId, information, price, mgf, exp, productImage);
         response.sendRedirect("manager_product");
