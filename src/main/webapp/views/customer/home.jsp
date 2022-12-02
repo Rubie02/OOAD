@@ -33,7 +33,7 @@
             <div class="content">
                 <span>fresh and organic</span>
                 <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
+                <a href="Shop" class="btn">shop now</a>
             </div>
             <div class="image">
                 <img src="${urlImage }home-img-1.png" alt="">
@@ -44,7 +44,7 @@
             <div class="content">
                 <span>fresh and organic</span>
                 <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
+                <a href="Shop" class="btn">shop now</a>
             </div>
             <div class="image">
                 <img src="${urlImage }home-img-2.png" alt="">
@@ -55,7 +55,7 @@
             <div class="content">
                 <span>fresh and organic</span>
                 <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
+                <a href="Shop" class="btn">shop now</a>
             </div>
             <div class="image">
                 <img src="${urlImage }home-img-3.png" alt="">
@@ -76,7 +76,7 @@
         <div class="content">
             <span>limited sales</span>
             <h3>upto 50% off</h3>
-            <a href="#" class="btn">shop now</a>
+            <a href="Shop" class="btn">shop now</a>
         </div>
     </div>
 
@@ -85,7 +85,7 @@
         <div class="content">
             <span>limited sales</span>
             <h3>upto 50% off</h3>
-            <a href="#" class="btn">shop now</a>
+            <a href="Shop" class="btn">shop now</a>
         </div>
     </div>
 
@@ -94,7 +94,7 @@
         <div class="content">
             <span>limited sales</span>
             <h3>upto 50% off</h3>
-            <a href="#" class="btn">shop now</a>
+            <a href="Shop" class="btn">shop now</a>
         </div>
     </div>
 
