@@ -34,7 +34,7 @@ public class LoginCusControl extends HttpServlet {
 
         	HttpSession session = request.getSession();
         	session.setAttribute("acc", a);
-        	request.getRequestDispatcher("home").forward(request, response);
+        	request.getRequestDispatcher("Home").forward(request, response);
         }
         
     }

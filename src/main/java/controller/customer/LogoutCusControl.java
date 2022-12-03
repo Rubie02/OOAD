@@ -22,7 +22,7 @@ public class LogoutCusControl extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		session.removeAttribute("acc");
-		response.sendRedirect("home");
+		response.sendRedirect("Home");
 	}
 
 	@Override

@@ -6,13 +6,17 @@
 package controller.customer;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entity.Account;
+
 import service.ISignupService;
 import service.SignupServiceImpl;
 
@@ -20,44 +24,71 @@ import service.SignupServiceImpl;
 @WebServlet(name = "SignupCusControl", urlPatterns = {"/Signup"})
 public class SignupCusControl extends HttpServlet {
 	ISignupService signupService = new SignupServiceImpl();
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+
+//    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+    	//response.setContentType("text/html;charset=UTF-8");
+//        String user = request.getParameter("user");
+//        String email = request.getParameter("email");
+//        String pass = request.getParameter("pass");
+//        String re_pass = request.getParameter("repass");
+//
+//        if(!pass.equals(re_pass))
+//        {
+//        	request.setAttribute("notification", "Password do not match!");
+//        	request.getRequestDispatcher("/views/customer/signup.jsp").forward(request, response);
+//        }
+//        else
+//        {
+//        	Account a = signupService.checkAccountExist(user);
+//        	if(a==null)
+//        	{
+//        		HttpSession session = request.getSession();
+//            	session.setAttribute("acc", a);
+//	        	signupService.signupforCustomer(user, pass, email);
+//	        	request.getRequestDispatcher("/views/customer/home.jsp").forward(request, response);
+//        	}
+//        	else
+//        	{
+//        		response.sendRedirect("/views/customer/home.jsp");
+//        	}
+//        }
+    //}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        request.getRequestDispatcher("/views/customer/signup.jsp").forward(request, response);
+    	
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    	response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("user");
+        String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         String re_pass = request.getParameter("repass");
-        
+
         if(!pass.equals(re_pass))
         {
-        	response.sendRedirect("/views/customer/login.jsp");
+        	request.setAttribute("notification", "Password do not match!");
+        	request.getRequestDispatcher("/views/customer/signup.jsp").forward(request, response);
         }
         else
         {
         	Account a = signupService.checkAccountExist(user);
         	if(a==null)
         	{
-        		signupService.signup(user, pass);
-        		request.setAttribute("mess", "Signup successful, please sign in again");
-        		request.getRequestDispatcher("/views/customer/login.jsp").forward(request, response);
-        		
+        		HttpSession session = request.getSession();
+            	session.setAttribute("acc", a);
+	        	signupService.signupforCustomer(user, pass, email);
+	        	request.getRequestDispatcher("/views/customer/home.jsp").forward(request, response);
         	}
-        	else 
+        	else
         	{
-        		response.sendRedirect("/views/customer/login.jsp");
+        		response.sendRedirect("/views/customer/home.jsp");
         	}
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     @Override

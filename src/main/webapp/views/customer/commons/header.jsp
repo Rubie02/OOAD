@@ -86,18 +86,25 @@
         <a href="#" class="btn">checkout cart</a>
     </div>
 
-    <form action="" class="login-form">
+<c:if test="${sessionScope.acc != null}">
+	<form action="Logout" class="login-form">
+        <h3>hello ${sessionScope.acc.username}</h3>
+        <input type="submit" value="Logout" class="btn">
+    </form>
+</c:if>
+<c:if test="${sessionScope.acc == null}">
+    <form action="Login" class="login-form">
         <h3>login form</h3>
-        <input type="email" placeholder="enter your email" class="box">
-        <input type="password" placeholder="enter your password" class="box">
+        <input name="user" type="text" placeholder="enter your username" class="box" required="" autofocus="">
+        <input name="pass" type="password" placeholder="enter your password" class="box" required autofocus="">
         <div class="remember">
             <input type="checkbox" name="" id="remember-me">
             <label for="remember-me">remember me</label>
         </div>
         <input type="submit" value="login now" class="btn">
-        <p>forget password? <a href="#">click here</a></p>
-        <p>don't have an account? <a href="#">create one</a></p>
+        <p>don't have an account? <a href="Signup">create one</a></p>
     </form>
+</c:if>
 
 </header>
 <script src="${urljs }script.js"></script>

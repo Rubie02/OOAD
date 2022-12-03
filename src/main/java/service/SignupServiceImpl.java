@@ -15,5 +15,11 @@ public class SignupServiceImpl implements ISignupService{
 	public void signup(String user, String pass) {
 		signupDao.signup(user, pass);
 	}
+
+	@Override
+	public void signupforCustomer(String user, String pass, String email) {
+		signupDao.signupforCustomer(user, pass, email);
+		
+	}
 	
 }

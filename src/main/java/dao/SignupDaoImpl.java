@@ -46,5 +46,21 @@ public class SignupDaoImpl extends DBConnection implements ISignupDao{
 		}
 		
 	}
+	@Override
+	public void signupforCustomer(String user, String pass, String email) {
+		String query = "INSERT into Accounts\n"+	
+				"values(?,?,0,?)";
+		try {
+			conn = new DBConnection().getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, user);
+			ps.setString(2, pass);
+			ps.setString(3,  email);
+			ps.executeUpdate();	
+		} catch (Exception e) {
+			
+		}
+		
+	}
 
 }

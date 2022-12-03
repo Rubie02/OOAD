@@ -24,6 +24,7 @@ public class SignupControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("user");
+        
         String pass = request.getParameter("pass");
         String re_pass = request.getParameter("repass");
         
