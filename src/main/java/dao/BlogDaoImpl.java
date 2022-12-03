@@ -32,7 +32,7 @@ public class BlogDaoImpl extends DBConnection implements IBlogDao{
 
 	@Override
 	public Blog getBlogByID(String bID) {
-		String query = "select * from Blogs\n" + "where blogId = ?";
+		String query = "select * from Blogs where blogId = ?";
 		try {
 			conn = new DBConnection().getConnectionW();
 			ps = conn.prepareStatement(query);
@@ -49,7 +49,7 @@ public class BlogDaoImpl extends DBConnection implements IBlogDao{
 
 	@Override
 	public void insertBlog(String details, String blogName, String blogImage) {
-		String query = "INSERT [dbo] . [Blogs] \n"
+		String query = "INSERT INTO [dbo] . [Blogs] \n"
 				+ "([details],[blogName],[blogImage])" + "VALUES(?,?,?)";
 		try {
 			conn = new DBConnection().getConnectionW();
@@ -67,7 +67,7 @@ public class BlogDaoImpl extends DBConnection implements IBlogDao{
 
 	@Override
 	public void deleteBlog(String bId) {
-		String query = "delete from Blogs\n" + "where blogId = ?";
+		String query = "DELETE FROM Blogs Where blogId=?";
 		try {
 			conn = new DBConnection().getConnectionW();
 			ps = conn.prepareStatement(query);

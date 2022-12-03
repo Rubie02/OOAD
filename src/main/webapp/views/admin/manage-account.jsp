@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manager Blog</title>
+<title>Manager Account</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet"
@@ -29,7 +29,8 @@ img {
 	height: 120px;
 }
 
-<style>.gallery-wrap .img-big-wrap img {
+<
+style>.gallery-wrap .img-big-wrap img {
 	height: 450px;
 	width: auto;
 	display: inline-block;
@@ -70,13 +71,16 @@ img {
 				<div class="row">
 					<div class="col-sm-6">
 						<h2>
-							Manage <b>Blogs</b>
+							Manage <b>Accounts</b>
 						</h2>
+						<div class="" role="">
+							<p class="text-danger" role="alert">${mess}</p>
+						</div>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success"
-							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add
-								New Blog</span></a> <a href="#deleteEmployeeModal"
+							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add 
+								New Account</span></a> <a href="#deleteEmployeeModal"
 							class="btn btn-danger" data-toggle="modal"><i
 							class="material-icons">&#xE15C;</i> <span>Delete</span></a>
 					</div>
@@ -88,10 +92,10 @@ img {
 						<th><span class="custom-checkbox"> <input
 								type="checkbox" id="selectAll"> <label for="selectAll"></label>
 						</span></th>
-						<th>Topic</th>
-						<th>Blog Name</th>
-						<th>Image</th>
-						<th>Actions</th>
+						<th>Username</th>
+						<th>Password</th>
+						<th>Type</th>
+						<th>Email</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -101,15 +105,16 @@ img {
 									type="checkbox" id="checkbox1" name="options[]" value="1">
 									<label for="checkbox1"></label>
 							</span></td>
-							<td>${o.blogName}</td>
-							<td>${o.blogName}</td>
-							<td><img src="${o.blogImage}"></td>
+							<td>${o.username}</td>
+							<td>${o.password}</td>
+							<td>${o.type}</td>
+							<td>${o.email}</td>
 							<td><a href="#editEmployeeModal" class="edit"
 								data-toggle="modal"><i class="material-icons"
 									data-toggle="tooltip" title="Edit">&#xE254;</i></a> <a
-								href="delete_blog?bId=${o.blogId}" class="delete" data-toggle="modal"><i
-									class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-							</td>
+								href="delete_account?username=${o.username}" class="delete"
+								data-toggle="modal"><i class="material-icons"
+									data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -134,26 +139,29 @@ img {
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="add_blog" method="post">
+				<form action="add_account" method="post">
 					<div class="modal-header">
-						<h4 class="modal-title">Add Blog</h4>
+						<h4 class="modal-title">Add Account</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Name</label> <input name="name" type="text"
+							<label>Username</label> <input name="user" type="text"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Image</label> <input name="image" type="text"
+							<label>Password</label> <input name="pass" type="text"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Description</label>
-							<textarea name="description" class="form-control" required></textarea>
+							<label>Type (1 is admin, 0 is customer)</label> <input name="type" type="text"
+								class="form-control" required>
 						</div>
-
+						<div class="form-group">
+							<label>Email</label> <input name="email" type="email"
+								class="form-control" required>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal"
@@ -170,26 +178,26 @@ img {
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
-						<h4 class="modal-title">Edit Employee</h4>
+						<h4 class="modal-title">Edit Account</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Name</label> <input type="text" class="form-control"
-								required>
+							<label>Username</label> <input name="user" type="text"
+								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Email</label> <input type="email" class="form-control"
-								required>
+							<label>Password</label> <input name="pass" type="text"
+								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
+							<label>Type (1 is admin, 0 is customer)</label> <input name="type" type="text"
+								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Phone</label> <input type="text" class="form-control"
-								required>
+							<label>Email</label> <input name="email" type="email"
+								class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -205,9 +213,9 @@ img {
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="delete_blog" method="post">
+				<form action="delete_account" method="post">
 					<div class="modal-header">
-						<h4 class="modal-title">Delete Product</h4>
+						<h4 class="modal-title">Delete Account</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
@@ -230,6 +238,6 @@ img {
 	<script>
 		
 	</script>
-	<jsp:include page="/views/admin/footer.jsp"></jsp:include>
+	<jsp:include page="/views/admin/footer.jsp"></jsp:include>]
 </body>
 </html>

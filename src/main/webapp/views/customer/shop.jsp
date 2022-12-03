@@ -30,7 +30,7 @@
 
 <section class="category">
 
-    <h1 class="title"> our <span>category</span> <a href="#">view all >></a> </h1>
+    <h1 class="title"> our <span>categories</span> <a href="#">view all >></a> </h1>
 
     <div class="box-container">
 	<c:forEach items="${listC}" var="o">
@@ -52,7 +52,6 @@
         <div class="box">
             <div class="icons">
                 <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
                 <a href="product_detail?pid=${o.productId }" class="fas fa-eye"></a>
             </div>
             <div class="image">

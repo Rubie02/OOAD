@@ -30,7 +30,7 @@
                     <a class="nav-link" href="manager_product">Manager Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Manager Account</a>
+                    <a class="nav-link" href="manager_account">Manager Account</a>
                 </li>
 
                 </c:if>

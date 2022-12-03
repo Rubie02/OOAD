@@ -157,5 +157,36 @@
     <servlet-name>DeleteBlogControl</servlet-name>
     <url-pattern>/delete_blog</url-pattern>
   </servlet-mapping>
-  
+  <!-- Account -->
+  <servlet>
+    <description></description>
+    <display-name>AddAccountControl</display-name>
+    <servlet-name>AddAccountControl</servlet-name>
+    <servlet-class>controller.admin.AddAccountControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAccountControl</servlet-name>
+    <url-pattern>/add_account</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteAccountControl</display-name>
+    <servlet-name>DeleteAccountControl</servlet-name>
+    <servlet-class>controller.admin.DeleteAccountControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAccountControl</servlet-name>
+    <url-pattern>/delete_account</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManageAccountControl</display-name>
+    <servlet-name>ManageAccountControl</servlet-name>
+    <servlet-class>controller.admin.ManageAccountControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageAccountControl</servlet-name>
+    <url-pattern>/manager_account</url-pattern>
+  </servlet-mapping>
+  <!-- End Account -->
 </web-app>
