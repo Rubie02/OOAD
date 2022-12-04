@@ -170,27 +170,24 @@ img {
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
-						<h4 class="modal-title">Edit Employee</h4>
+						<h4 class="modal-title">Edit Blog</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Name</label> <input type="text" class="form-control"
-								required>
+							<label>Name</label> <input name="name" type="text"
+								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Email</label> <input type="email" class="form-control"
-								required>
+							<label>Image</label> <input name="image" type="text"
+								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
+							<label>Description</label>
+							<textarea name="description" class="form-control" required></textarea>
 						</div>
-						<div class="form-group">
-							<label>Phone</label> <input type="text" class="form-control"
-								required>
-						</div>
+
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal"
@@ -207,12 +204,12 @@ img {
 			<div class="modal-content">
 				<form action="delete_blog" method="post">
 					<div class="modal-header">
-						<h4 class="modal-title">Delete Product</h4>
+						<h4 class="modal-title">Delete Blog</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>Are you sure you want to delete these Records?</p>
+						<p>Are you sure you want to delete these blogs?</p>
 						<p class="text-warning">
 							<small>This action cannot be undone.</small>
 						</p>

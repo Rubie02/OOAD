@@ -79,7 +79,7 @@
                     </tbody>
                 </table>
                 <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    <div class="hint-text">Showing <b>entries</b> </div>
                     <ul class="pagination">
                         <li class="page-item disabled"><a href="#">Previous</a></li>
                         <li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -104,11 +104,11 @@
                         <div class="modal-body">					
                             <div class="form-group">
                                 <label>Name</label>
-                                <input name="name" type="text" class="form-control" required>
+                                <input name="productName" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input name="image" type="text" class="form-control" required>
+                                <input name="productImage" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
@@ -116,7 +116,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control" required></textarea>
+                                <textarea name="information" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
@@ -142,31 +142,35 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">						
-                            <h4 class="modal-title">Edit Employee</h4>
+                            <h4 class="modal-title">Edit Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" required>
+                                <input name="productName" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" required>
+                                <label>Image</label>
+                                <input name="productImage" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <textarea class="form-control" required></textarea>
+                                <label>Price</label>
+                                <input name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="text" class="form-control" required>
-                            </div>					
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-info" value="Save">
-                        </div>
+                                <label>Description</label>
+                                <textarea name="information" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select name="category" class="form-select" aria-label="Default select example">
+                                    <c:forEach items="${listC}" var="o">
+                                        <option value="${o.cateId}">${o.cateName}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            </div>
                     </form>
                 </div>
             </div>
@@ -181,7 +185,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
-                            <p>Are you sure you want to delete these Records?</p>
+                            <p>Are you sure you want to delete these products?</p>
                             <p class="text-warning"><small>This action cannot be undone.</small></p>
                         </div>
                         <div class="modal-footer">

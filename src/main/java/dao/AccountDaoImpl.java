@@ -15,7 +15,7 @@ public class AccountDaoImpl extends DBConnection implements IAccountDao {
 	ResultSet rs = null;
 	@Override
 	public void insertAccount(String user, String pass, int type, String email) {
-		String query = "INSERT INTO [dbo] . [Accounts] \n" + "([user],[pass],[type],[email])" + "VALUES(?,?,?,?)";
+		String query = "INSERT INTO [dbo] . [Accounts] \n" + "([username],[password],[type],[email])" + "VALUES(?,?,?,?)";
 		try {
 			conn = new DBConnection().getConnectionW();
 			ps = conn.prepareStatement(query);

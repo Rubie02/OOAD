@@ -30,7 +30,7 @@
 
 <section class="category">
 
-    <h1 class="title"> our <span>categories</span> <a href="#">view all >></a> </h1>
+    <h1 class="title"> our <span>categories</span> </h1>
 
     <div class="box-container">
 	<c:forEach items="${listC}" var="o">

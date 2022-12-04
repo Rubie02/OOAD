@@ -2,15 +2,15 @@ package entity;
 
 import java.sql.Date;
 
-public class Order {
+public class Order{ //Cart
 	private int orderId;
-	private int cusId;
+	private Customer cusId;
 	private Date orderDate;
-	private int employeeId;
+	private Employee employeeId;
 	public Order() {
 		super();
 	}
-	public Order(int orderId, int cusId, Date orderDate, int employeeId) {
+	public Order(int orderId, Customer cusId, Date orderDate, Employee employeeId) {
 		super();
 		this.orderId = orderId;
 		this.cusId = cusId;
@@ -23,10 +23,10 @@ public class Order {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public int getCusId() {
+	public Customer getCusId() {
 		return cusId;
 	}
-	public void setCusId(int cusId) {
+	public void setCusId(Customer cusId) {
 		this.cusId = cusId;
 	}
 	public Date getOrderDate() {
@@ -35,11 +35,12 @@ public class Order {
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public int getEmployeeId() {
+	public Employee getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(Employee employeeId) {
 		this.employeeId = employeeId;
 	}
+	
 	
 }

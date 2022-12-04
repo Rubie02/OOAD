@@ -1,33 +1,41 @@
 package entity;
 
 public class OrderDetail {
-	private int orderId;
-	private int productId;
+	private int odId;
+	private Order order;
+	private Product product;
 	private float unitPrice;
 	private int quantity;
 	private float discount;
 	public OrderDetail() {
 		super();
 	}
-	public OrderDetail(int orderId, int productId, float unitPrice, int quantity, float discount) {
+	public OrderDetail(int odId, Order order, Product product, float unitPrice, int quantity, float discount) {
 		super();
-		this.orderId = orderId;
-		this.productId = productId;
+		this.odId = odId;
+		this.order = order;
+		this.product = product;
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
 		this.discount = discount;
 	}
-	public int getOrderId() {
-		return orderId;
+	public int getOdId() {
+		return odId;
 	}
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOdId(int odId) {
+		this.odId = odId;
 	}
-	public int getProductId() {
-		return productId;
+	public Order getOrder() {
+		return order;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	public float getUnitPrice() {
 		return unitPrice;
@@ -47,5 +55,7 @@ public class OrderDetail {
 	public void setDiscount(float discount) {
 		this.discount = discount;
 	}
+	
+	
 	
 }
