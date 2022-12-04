@@ -1,5 +1,4 @@
-
-﻿CREATE DATABASE OFruit
+CREATE DATABASE OFruit
 GO
 USE OFruit
 GO
@@ -48,7 +47,7 @@ CREATE TABLE [dbo].[Employees](
 	[employeeId] [int] IDENTITY(1,1) NOT NULL,
 	[employeeName] [nvarchar](50) NOT NULL,
 	[employeeAddress] [nvarchar](50) NULL,
-	[enmployeePhoneNumber] [nchar](10) NOT NULL,
+	[employeePhoneNumber] [nchar](10) NOT NULL,
 	[salary] [int] NULL,
 	[hireDate] [datetime] NULL,
  CONSTRAINT [PK_Employees] PRIMARY KEY CLUSTERED 
@@ -59,11 +58,16 @@ CREATE TABLE [dbo].[Employees](
 GO
 
 CREATE TABLE [dbo].[OrderDetails](
+	[odId] [int] IDENTITY(1,1) NOT NULL,
 	[orderId] [int] NOT NULL,
 	[productId] [int] NOT NULL,
 	[unitPrice] [float] NOT NULL,
 	[quantity] [int] NOT NULL,
-	[discount] [float] NULL
+	[discount] [float] NULL,
+ CONSTRAINT [PK_OrderDetails] PRIMARY KEY CLUSTERED 
+(
+	[odId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
@@ -71,7 +75,11 @@ CREATE TABLE [dbo].[Orders](
 	[orderId] [int] IDENTITY(1,1) NOT NULL,
 	[cusId] [int] NOT NULL,
 	[orderDate] [datetime] NULL,
-	[employeeId] [int] NULL
+	[employeeId] [int] NULL,
+ CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
+(
+	[orderId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
@@ -123,9 +131,6 @@ ALTER TABLE dbo.Customers ADD FOREIGN KEY(username) REFERENCES dbo.Accounts(user
 ALTER TABLE dbo.Orders ADD FOREIGN KEY(cusId) REFERENCES dbo.Customers(cusId)
 ALTER TABLE dbo.Orders ADD FOREIGN KEY(employeeId) REFERENCES dbo.Employees(employeeId)
 
-ALTER TABLE dbo.OrderDetails ADD FOREIGN KEY(orderId) REFERENCES dbo.Orders(orderId)
-ALTER TABLE dbo.OrderDetails ADD FOREIGN KEY(productId) REFERENCES dbo.Products(productId)
-
 ALTER TABLE dbo.Products ADD FOREIGN KEY(supId) REFERENCES dbo.Suppliers(supId)
 ALTER TABLE dbo.Products ADD FOREIGN KEY(cateId) REFERENCES dbo.Categories(cateId)
 
@@ -138,6 +143,8 @@ INSERT INTO Accounts(username, password, type, email) VALUES(N'luong', N'1',1, N
 INSERT INTO Accounts(username, password, type, email) VALUES(N'hien', N'1',1, N'hien123@gmail.com')
 INSERT INTO Accounts(username, password, type, email) VALUES(N'bach', N'1',1, N'bach123@gmail.com')
 INSERT INTO Accounts(username, password, type, email) VALUES(N'bao', N'1',0, N'bao456@gmail.com')
+INSERT INTO Accounts(username, password, type, email) VALUES(N'vu', N'1',0, N'vu456@gmail.com')
+INSERT INTO Accounts(username, password, type, email) VALUES(N'thuy', N'1',0, N'thuy456@gmail.com')
 SELECT * FROM Accounts
 
 INSERT INTO Blogs(details, blogName, blogImage) VALUES(N'Rau củ là các loại thực vật đã bị biến đổi để thích ứng với việc dự trữ chất dinh dưỡng để cây phát triển. Các loại củ thường dùng làm thực phẩm cho con người phải kể đến như: củ khoai lang, củ cà rốt, củ su, củ khoai môn, khoai tây, củ dền,...', N'Rau củ là gì?', N'https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%209/Ng%C3%A0y_16/Thanh/3538_Rau_1.jpg') 
@@ -167,5 +174,38 @@ INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, p
 VALUES(N'Cà rốt Đà Lạt túi 500g', 3, 1, N'Cà rốt Đà Lạt là một loại củ rất quen thuộc trong các món ăn của người Việt. Cà rốt có hàm lượng chất dinh dưỡng và vitamin A cao, được xem là nguyên liệu cần thiết cho các món ăn dặm của trẻ nhỏ, giúp trẻ sáng mắt và cung cấp nguồn chất xơ dồi dào.', 16900, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8785/271572/bhx/ca-rot-da-lat-tui-500g-2-5-cu-202203261338249710.jpg')
 INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
 VALUES(N'Khoai lang Nhật túi 1kg', 3, 1, N'Khoai lang Nhật trồng tại Lâm Đồng là món ăn được rất nhiều người yêu thích, được trồng và có củ quanh năm, ngon nhất là khi được nướng lên trên một bếp than đổ hồng.', 33000, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8785/271508/bhx/khoai-lang-nhat-tui-1kg-4-10-cu-202205201544144843.jpg')
-
 SELECT * FROM Products
+
+INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Huynh Gia Bao', N'HCM', N'0324342564', 0, N'bao')
+INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Dang Nguyen Vu', N'HCM', N'0343458193', 1, N'vu')
+INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Ho Bich Thuy', N'HCM', N'0923485325', 2, N'thuy')
+SELECT * FROM Customers WHERE cusId=2
+
+INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary, hireDate) VALUES(N'Bach', N'DN', N'0293423452', 10000000, N'2022-12-4')
+INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary, hireDate) VALUES(N'Hoai', N'PY', N'0293423452', 10000000, N'2022-12-4')
+INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary, hireDate) VALUES(N'Luong', N'BT', N'0293423452', 10000000, N'2022-12-4')
+INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary, hireDate) VALUES(N'Hien', N'QN', N'0293423452', 10000000, N'2022-12-4')
+SELECT * FROM Employees
+
+INSERT INTO Orders(cusId, orderDate, employeeId) VALUES(1, GETDATE(), 1)
+INSERT INTO Orders(cusId, orderDate, employeeId) VALUES(2, GETDATE(), 1)
+UPDATE Orders set cusId=2, orderDate=GETDATE() WHERE orderId=2
+DELETE FROM Orders WHERE orderId=2
+SELECT orderId, orderDate, Customers.cusId, cusAddress, cusPhoneNumber, username, rank
+FROM Orders INNER JOIN  Customers ON Orders.cusId=Customers.cusId
+WHERE orderId=3
+SELECT * FROM Orders
+
+INSERT INTO OrderDetails(orderId, productId, unitPrice, quantity, discount)
+VALUES(2, 1, 14000, 2, 0)
+INSERT INTO OrderDetails(orderId, productId, unitPrice, quantity, discount)
+VALUES(1, 3, 16000, 2, 0)
+UPDATE OrderDetails SET orderId=3, productId=2, unitPrice=14500, quantity=3
+WHERE odId=3
+SELECT * FROM OrderDetails
+DELETE FROM OrderDetails WHERE odID=1
+
+SELECT odId, quantity, unitPrice, Orders.orderId, Orders.orderDate, Products.productName, Products.price, Products.productImage
+FROM OrderDetails INNER JOIN Orders ON OrderDetails.orderId=Orders.orderId
+INNER JOIN Products ON OrderDetails.productId=Products.productId
+WHERE OrderDetails.odId=2
