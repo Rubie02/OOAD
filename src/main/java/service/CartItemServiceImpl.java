@@ -7,35 +7,40 @@ import dao.ICartItemDao;
 import entity.OrderDetail;
 
 public class CartItemServiceImpl implements ICartItemService{
-	ICartItemDao cartItemS = new CartItemDaoImpl();
+	ICartItemDao cartItemDao = new CartItemDaoImpl();
 	@Override
 	public void insert(OrderDetail cart) {
-		cartItemS.insert(cart);
+		OrderDetail oldOd = cartItemDao.get(cart.getOdId());
+		oldOd.setOrder(cart.getOrder());
+		oldOd.setProduct(cart.getProduct());
+		oldOd.setUnitPrice(cart.getUnitPrice());
+		oldOd.setQuantity(cart.getQuantity());
+		cartItemDao.insert(oldOd);
 		
 	}
 
 	@Override
 	public void edit(OrderDetail cart) {
-		cartItemS.edit(cart);
+		cartItemDao.edit(cart);
 		
 	}
 
 	@Override
 	public void delete(int id) {
-		cartItemS.delete(id);
+		cartItemDao.delete(id);
 		
 	}
 
 	@Override
 	public OrderDetail get(int id) {
 		// TODO Auto-generated method stub
-		return cartItemS.get(id);
+		return cartItemDao.get(id);
 	}
 
 	@Override
 	public List<OrderDetail> getAll() {
 		// TODO Auto-generated method stub
-		return cartItemS.getAll();
+		return cartItemDao.getAll();
 	}
 
 }

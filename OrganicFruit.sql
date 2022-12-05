@@ -131,6 +131,9 @@ ALTER TABLE dbo.Customers ADD FOREIGN KEY(username) REFERENCES dbo.Accounts(user
 ALTER TABLE dbo.Orders ADD FOREIGN KEY(cusId) REFERENCES dbo.Customers(cusId)
 ALTER TABLE dbo.Orders ADD FOREIGN KEY(employeeId) REFERENCES dbo.Employees(employeeId)
 
+ALTER TABLE dbo.OrderDetails ADD FOREIGN KEY(productId) REFERENCES dbo.Products(productId)
+ALTER TABLE dbo.OrderDetails ADD FOREIGN KEY(orderId) REFERENCES dbo.Orders(orderId)
+
 ALTER TABLE dbo.Products ADD FOREIGN KEY(supId) REFERENCES dbo.Suppliers(supId)
 ALTER TABLE dbo.Products ADD FOREIGN KEY(cateId) REFERENCES dbo.Categories(cateId)
 
@@ -195,6 +198,7 @@ SELECT orderId, orderDate, Customers.cusId, cusAddress, cusPhoneNumber, username
 FROM Orders INNER JOIN  Customers ON Orders.cusId=Customers.cusId
 WHERE orderId=3
 SELECT * FROM Orders
+SELECT * FROM OrderDetails
 
 INSERT INTO OrderDetails(orderId, productId, unitPrice, quantity, discount)
 VALUES(2, 1, 14000, 2, 0)
@@ -203,7 +207,7 @@ VALUES(1, 3, 16000, 2, 0)
 UPDATE OrderDetails SET orderId=3, productId=2, unitPrice=14500, quantity=3
 WHERE odId=3
 SELECT * FROM OrderDetails
-DELETE FROM OrderDetails WHERE odID=1
+DELETE FROM OrderDetails WHERE odID=4
 
 SELECT odId, quantity, unitPrice, Orders.orderId, Orders.orderDate, Products.productName, Products.price, Products.productImage
 FROM OrderDetails INNER JOIN Orders ON OrderDetails.orderId=Orders.orderId

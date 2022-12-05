@@ -108,7 +108,7 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 			String productImage) {
 		String query = "INSERT [dbo] . [Products] \n"
 				+ "([productName],[supId],[cateId],[information],[price],[MGF],[EXP],[productImage])\n"
-				+ "VALUES(?,?,?,?,?,?,?)";
+				+ "VALUES(?,?,?,?,?,?,?,?)";
 		try {
 			conn = new DBConnection().getConnectionW();
 			ps=conn.prepareStatement(query);

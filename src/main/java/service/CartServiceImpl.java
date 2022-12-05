@@ -16,7 +16,11 @@ public class CartServiceImpl implements ICartService{
 
 	@Override
 	public void edit(Order cart) {
-		cartD.edit(cart);
+		Order oldOrder = cartD.get(cart.getOrderId());
+		oldOrder.setCusId(cart.getCusId());
+		oldOrder.setOrderDate(cart.getOrderDate());
+		oldOrder.setEmployeeId(cart.getEmployeeId());
+		cartD.edit(oldOrder);
 		
 	}
 
@@ -28,14 +32,11 @@ public class CartServiceImpl implements ICartService{
 
 	@Override
 	public Order get(int id) {
-		// TODO Auto-generated method stub
 		return cartD.get(id);
 	}
 
 	@Override
 	public List<Order> getAll() {
-		// TODO Auto-generated method stub
 		return cartD.getAll();
 	}
-
 }

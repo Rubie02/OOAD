@@ -115,12 +115,24 @@
                                 <input name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
+                                <label>Supplier Id</label>
+                                <input name="supId" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>MGF</label>
+                                <input name="mgf" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>EXP</label>
+                                <input name="exp" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
                                 <label>Description</label>
                                 <textarea name="information" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
+                                <select name="cateId" class="form-select" aria-label="Default select example">
                                     <c:forEach items="${listC}" var="o">
                                         <option value="${o.cateId}">${o.cateName}</option>
                                     </c:forEach>
@@ -145,7 +157,7 @@
                             <h4 class="modal-title">Edit Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
+                         <div class="modal-body">					
                             <div class="form-group">
                                 <label>Name</label>
                                 <input name="productName" type="text" class="form-control" required>
@@ -159,12 +171,24 @@
                                 <input name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
+                                <label>Supplier Id</label>
+                                <input name="supId" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>MGF</label>
+                                <input name="mgf" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>EXP</label>
+                                <input name="exp" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
                                 <label>Description</label>
                                 <textarea name="information" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
+                                <select name="cateId" class="form-select" aria-label="Default select example">
                                     <c:forEach items="${listC}" var="o">
                                         <option value="${o.cateId}">${o.cateName}</option>
                                     </c:forEach>

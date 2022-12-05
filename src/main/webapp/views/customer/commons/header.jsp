@@ -30,6 +30,7 @@
     <nav class="navbar">
         <a href="Home">home</a>
         <a href="Shop">shop</a>
+        <a href="Cart">cart</a>
         <a href="About">about</a>
         <a href="Review">review</a>
         <a href="Blog">blog</a>
@@ -37,9 +38,13 @@
     </nav>
 
     <div class="icons">
+    	<c:set var="count" value="${0 }"/>
+    	<c:forEach items="${sessionScope.cart }" var="map">
+    		<c:set var="count" value="${count+map.value.quantity }"/>
+    	</c:forEach>
         <div id="menu-btn" class="fas fa-bars"></div>
         <div id="search-btn" class="fas fa-search"></div>
-        <div id="cart-btn" class="fas fa-shopping-cart"></div>
+        <div id="cart-btn" class="fas fa-shopping-cart"><span class="badge badge-light">${count }</span></div>
         <div id="login-btn" class="fas fa-user"></div>
     </div>
 
@@ -52,38 +57,24 @@
     </form>
 
     <div class="shopping-cart">
+    <c:set var="total" value="${0 }"/>
+    
+    <c:forEach items="${sessionScope.cart }" var="map">
         <div class="box">
-            <i class="fas fa-times"></i>
-            <img src="${urlImage }cart-1.jpg" alt="">
+            <a href="remove_from_cart?productId=${ map.value.product.productId}" class="fas fa-times"></a>
+            <img src="${map.value.product.productImage }" alt="">
             <div class="content">
-                <h3>organic food</h3>
-                <span class="quantity">1</span>
+                <h3>${map.value.product.productName }</h3>
+                <span class="quantity">${map.value.quantity }</span>
                 <span class="multiply">x</span>
-                <span class="price">$18.99</span>
+                <span class="price">${map.value.product.price } VND</span>
             </div>
         </div>
-        <div class="box">
-            <i class="fas fa-times"></i>
-            <img src="${urlImage }cart-2.jpg" alt="">
-            <div class="content">
-                <h3>organic food</h3>
-                <span class="quantity">1</span>
-                <span class="multiply">x</span>
-                <span class="price">$18.99</span>
-            </div>
-        </div>
-        <div class="box">
-            <i class="fas fa-times"></i>
-            <img src="${urlImage }cart-3.jpg" alt="">
-            <div class="content">
-                <h3>organic food</h3>
-                <span class="quantity">1</span>
-                <span class="multiply">x</span>
-                <span class="price">$18.99</span>
-            </div>
-        </div>
-        <h3 class="total"> total : <span>56.97</span> </h3>
-        <a href="#" class="btn">checkout cart</a>
+        <c:set var="total" value="${total+map.value.quantity*map.value.product.price }"/>
+
+        </c:forEach>
+        <h3 class="total"> total : <span>${total } VND</span> </h3>
+        <a href="Cart" class="btn">checkout cart</a>
     </div>
 
 <c:if test="${sessionScope.acc != null}">

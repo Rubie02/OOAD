@@ -41,7 +41,7 @@
         <h3>${detail.productName}</h3>
         <p>${detail.information }</p>
         <p>Don't hesitate! Add this product to your cart as soon as possible!</p>
-        <a href="#" class="btn">Add to cart</a>
+        <a href="add_to_cart?productId=${detail.productId }&quantity=1" class="btn">Add to cart</a>
     </div>
 
 </section>
@@ -54,7 +54,7 @@
 	<c:forEach items="${listP}" var="o">
         <div class="box">
             <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
+                <a href="add_to_cart?productId=${o.productId }&quantity=1" class="fas fa-shopping-cart"></a>
                 <a href="product_detail?pid=${o.productId }" class="fas fa-eye"></a>
             </div>
             <div class="image">

@@ -18,7 +18,7 @@
 <body>
 <jsp:include page="/views/customer/commons/header.jsp"></jsp:include>
 <div class="heading">
-    <h1>about product</h1>
+    <h1>about cart</h1>
     <p> <a href="Home">home >></a> about cart </p>
 </div>
 <div class="container mb-4">
@@ -28,62 +28,42 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col" class="content">Image</th>
+                            <th scope="col" class="info">Image</th>
                             <th scope="col"class="content">Product</th>
-                            <th scope="col"class="content">Date</th>
+                            <th scope="col"class="content">Status</th>
                             <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
                             <th> </th>
                         </tr>
                     </thead>
                     <tbody>
+                    <c:forEach items="${sessionScope.cart }" var="map">
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Dada</td>
+                            <td><img class="img-reponsive" width="80px" height="80px" src="${map.value.product.productImage }" /> </td>
+                            <td>${map.value.product.productName }</td>
                             <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">124,90 </td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                            <td>
+                            <div class="form-group d-flex justify-content-between">
+                            	<a class="btn btn-sm btn decre" href="quantity_inc_dec?action=dec&id=${map.value.product.productId }"><i class="fas fa-minus-square"></i></a>
+                            		<input class="form-control" type="text" value="${map.value.quantity }" />
+                            	<a class="btn btn-sm btn incre" href="quantity_inc_dec?action=inc&id=${map.value.product.productId }"><i class="fas fa-plus-square"></i></a>
+                            </div >
+                            </td>
+                            <td class="text-right">${map.value.product.price*map.value.quantity } VND </td>
+                            <td class="text-right"><a href="remove_from_cart?productId=${ map.value.product.productId}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
                         </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Toto</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">33,90 </td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Titi</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">70,00 </td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Sub-Total</td>
-                            <td class="text-right">255,90 VND</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Shipping</td>
-                            <td class="text-right">6,90 VND</td>
-                        </tr>
+                        </c:forEach>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>346,90 VND</strong></td>
+                            <c:set var="total" value="${0 }"/>   
+                            <c:forEach items="${sessionScope.cart }" var="map">
+                            	<c:set var="total" value="${total+map.value.quantity*map.value.product.price }"/>
+                            	</c:forEach>                        
+                            <td class="text-right"><strong>${total } VND</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -92,13 +72,13 @@
         <div class="col mb-2">
             <div class="row">	
                 <div class="col-sm-12  col-md-6">
-                <a href ="#">
+                <a href ="Shop">
                     <button  class="btn btn-block btn-light">Continue Shopping</button>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                 <a href="#">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Buy</button>
                     </a>
                 </div>
             </div>

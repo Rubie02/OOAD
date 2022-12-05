@@ -29,6 +29,7 @@
             <h3>quick links</h3>
             <a href="Home"> <i class="fas fa-arrow-right"></i> home</a>
             <a href="Shop"> <i class="fas fa-arrow-right"></i> shop</a>
+             <a href="Cart"> <i class="fas fa-arrow-right"></i> cart</a>
             <a href="About"> <i class="fas fa-arrow-right"></i> about</a>
             <a href="Review"> <i class="fas fa-arrow-right"></i> review</a>
             <a href="Blog"> <i class="fas fa-arrow-right"></i> blog</a>
