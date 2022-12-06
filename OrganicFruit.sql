@@ -100,6 +100,17 @@ CREATE TABLE [dbo].[Products](
 ) ON [PRIMARY]
 GO
 
+CREATE TABLE [dbo].[Review] 
+(
+	id int IDENTITY(1,1) primary key,
+	product_id int not null foreign key references Products(productId) on delete cascade,
+	name nvarchar(50) not null,
+	email nvarchar(50) not null,
+	content nvarchar(4000) not null,
+	created date ,
+)
+GO
+
 CREATE TABLE [dbo].[Accounts](
 	[username] [nchar](30) NOT NULL,
 	[password] [nchar](30) NOT NULL,
@@ -166,18 +177,46 @@ INSERT INTO Suppliers(supName, supAddress, supPhoneNumber) VALUES(N'Nông Sản 
 SELECT * FROM Suppliers
 
 INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
-VALUES(N'Xà lách lô lô xanh gói 500g', 1, 3, N'Rau xà lách lô lô xanh của Bách hóa Xanh được trồng tại Lâm Đồng và đóng gói theo những tiêu chuẩn nghiêm ngặt, bảo đảm các tiêu chuẩn xanh - sach.', 19900, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8820/271485/bhx/xa-lach-lo-lo-xanh-goi-500g-202205181607134610.jpg')
+VALUES(N'Xà lách lô lô xanh gói 500g', 1, 3, N'Rau xà lách lô lô xanh của Bách hóa Xanh được trồng tại Lâm Đồng và đóng gói theo những tiêu chuẩn nghiêm ngặt, bảo đảm các tiêu chuẩn xanh - sach.', 19900, GETDATE(), GETDATE()+1, N'https://as1.ftcdn.net/v2/jpg/03/02/70/54/1000_F_302705472_xJOS4fp5RpCug4d8zumIjI9meAx8XpOL.jpg')
 INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
-VALUES(N'Rau mồng tơi baby gói 300g', 1, 3, N'Rau mồng tơi là loại rau có hàm lượng calo và chất béo thấp, nhưng lại chứa lượng lớn vitamin, khoáng chất thiết yếu và các hợp chất chống oxy hóa giúp cho quá trình tiêu hóa diễn ra hiệu quả hơn và ngăn ngừa các vấn đề về đường ruột.', 13500, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8820/223332/bhx/rau-mong-toi-baby-goi-300g-202205240838481864.jpg')
+VALUES(N'Rau mồng tơi baby gói 300g', 1, 3, N'Rau mồng tơi là loại rau có hàm lượng calo và chất béo thấp, nhưng lại chứa lượng lớn vitamin, khoáng chất thiết yếu và các hợp chất chống oxy hóa giúp cho quá trình tiêu hóa diễn ra hiệu quả hơn và ngăn ngừa các vấn đề về đường ruột.', 13500, GETDATE(), GETDATE()+1, N'https://t4.ftcdn.net/jpg/02/49/93/33/240_F_249933303_rB82fjbNuZdT3444cZfutFG1Wau0T1VA.jpg')
 INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
-VALUES(N'Táo Diva mini New Zealand hộp 1kg', 2, 2, N'Táo Diva mini là trái cây được nhập khẩu trực tiếp từ New Zealand. Táo Diva có màu đỏ đậm, xem lẫn các sắc vàng nhìn vô cùng bắt mắt và hấp dẫn.', 62000, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8788/296998/bhx/tao-diva-mini-new-zealand-hop-1kg-8-10-trai-202211081633487727.jpg')
+VALUES(N'Táo Diva mini New Zealand hộp 1kg', 2, 2, N'Táo Diva mini là trái cây được nhập khẩu trực tiếp từ New Zealand. Táo Diva có màu đỏ đậm, xem lẫn các sắc vàng nhìn vô cùng bắt mắt và hấp dẫn.', 62000, GETDATE(), GETDATE()+1, N'https://t4.ftcdn.net/jpg/00/94/82/05/240_F_94820552_qU4QTqejyRdOZaeH4fFaSbKL4U0XeooL.jpg')
 INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
-VALUES(N'Bưởi năm roi trái từ 1.3kg - 1.4kg', 2, 2, N'Bưởi năm roi là một trong những trái cây đặc sản nổi tiếng của Việt Nam. Bưởi có mùi hương thanh mát, lúc ăn bạn sẽ cảm nhận được sự hoà quyện xen lẫn giữa vị chua và vị ngọt. Bưởi 5 roi không chỉ ngon mà còn nhiều dưỡng chất tốt cho sức khoẻ, hệ miễn dịch và phù hợp cho người giảm cân và tiểu đường', 45000, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8788/273343/bhx/buoi-nam-roi-trai-tu-13kg-14kg-202211041008117276.jpg')
+VALUES(N'Bưởi năm roi trái từ 1.3kg - 1.4kg', 2, 2, N'Bưởi năm roi là một trong những trái cây đặc sản nổi tiếng của Việt Nam. Bưởi có mùi hương thanh mát, lúc ăn bạn sẽ cảm nhận được sự hoà quyện xen lẫn giữa vị chua và vị ngọt. Bưởi 5 roi không chỉ ngon mà còn nhiều dưỡng chất tốt cho sức khoẻ, hệ miễn dịch và phù hợp cho người giảm cân và tiểu đường', 45000, GETDATE(), GETDATE()+1, N'https://img.freepik.com/free-photo/cutted-half-fresh-grapefruit-put-dark-background_1150-28082.jpg?w=996&t=st=1670293643~exp=1670294243~hmac=a33b14719907863174ead295a2b26653bae544cb1fde23b518590b3ac7cb95a3')
 INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
-VALUES(N'Cà rốt Đà Lạt túi 500g', 3, 1, N'Cà rốt Đà Lạt là một loại củ rất quen thuộc trong các món ăn của người Việt. Cà rốt có hàm lượng chất dinh dưỡng và vitamin A cao, được xem là nguyên liệu cần thiết cho các món ăn dặm của trẻ nhỏ, giúp trẻ sáng mắt và cung cấp nguồn chất xơ dồi dào.', 16900, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8785/271572/bhx/ca-rot-da-lat-tui-500g-2-5-cu-202203261338249710.jpg')
+VALUES(N'Cà rốt Đà Lạt túi 500g', 3, 1, N'Cà rốt Đà Lạt là một loại củ rất quen thuộc trong các món ăn của người Việt. Cà rốt có hàm lượng chất dinh dưỡng và vitamin A cao, được xem là nguyên liệu cần thiết cho các món ăn dặm của trẻ nhỏ, giúp trẻ sáng mắt và cung cấp nguồn chất xơ dồi dào.', 16900, GETDATE(), GETDATE()+1, N'https://t4.ftcdn.net/jpg/00/53/09/51/240_F_53095132_RYsAcP3cQ72jM84ibY2FGCCAe9K14CiM.jpg')
 INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
-VALUES(N'Khoai lang Nhật túi 1kg', 3, 1, N'Khoai lang Nhật trồng tại Lâm Đồng là món ăn được rất nhiều người yêu thích, được trồng và có củ quanh năm, ngon nhất là khi được nướng lên trên một bếp than đổ hồng.', 33000, GETDATE(), GETDATE()+1, N'https://cdn.tgdd.vn/Products/Images/8785/271508/bhx/khoai-lang-nhat-tui-1kg-4-10-cu-202205201544144843.jpg')
+VALUES(N'Khoai lang Nhật túi 1kg', 3, 1, N'Khoai lang Nhật trồng tại Lâm Đồng là món ăn được rất nhiều người yêu thích, được trồng và có củ quanh năm, ngon nhất là khi được nướng lên trên một bếp than đổ hồng.', 33000, GETDATE(), GETDATE()+1, N'https://t3.ftcdn.net/jpg/02/24/91/94/240_F_224919459_G08KXCX5Z67CvFXTwRxzYzk9vYVyBG1I.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Củ cải trắng 500g', 3, 1, N'Củ cải trắng trồng ở Đà Lạt là một loại rau củ vừa có thể dùng để làm thực phẩm, vừa có thể sử dụng để làm dầu hạt cải. Củ cải trắng chứa rất nhiều vitamin và khoáng chất, tốt cho cơ thể. Một vài công dụng của củ cải trắng có thể kể đến như: giảm cân, hỗ trợ hệ tiêu hoá, tăng cường miễn dịch,...', 8500, GETDATE(), GETDATE()+1, N'https://img.freepik.com/free-photo/stack-white-radishes-marble-surface_114579-47937.jpg?w=996&t=st=1670294389~exp=1670294989~hmac=cda7c38d205c1e92af78c12df3f63daf6c17e31d734005adebf917b6a237df96')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Dưa leo 500g',1,3,N'Dưa leo trái lớn tươi ngon, được trồng và thu hoạch đảm bảo chất lượng, an toàn cho sức khỏe người sử dụng. Trong dưa leo chứa nhiều chất xơ, vitamin C, E, K, magie,...dễ ăn, dễ phối trộn với các món ăn khác, tốt sức khỏe vừa mang lại hiệu quả làm đẹp rất tốt',9500,GETDATE(),GETDATE()+1,N'https://t3.ftcdn.net/jpg/00/79/37/28/240_F_79372833_XC4hnS9JJOQH9srNJiOb9dKqXO6ASYOq.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Cà chua bi hộp 300g',2,1,N'Cà chua bi được trồng ở Lâm Đồng là loại thực phẩm dinh dưỡng, tốt cho sức khỏe được nhiều người chọn lựa. Cà chua bi to trái, căng mọng có thể dùng ăn chơi hoặc là nguyên liệu cho những món ăn ngon khác. Cà chua bi giúp đẹp da, sáng mắt là thực phẩm nên sử dụng thường xuyên.',14200,GETDATE(),GETDATE()+1,N'https://t3.ftcdn.net/jpg/02/65/95/86/240_F_265958692_tQES2ut4UbCH75PjiMGEDAtKvwBuOux8.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Rau má gói 200g',1,3,N'Rau má tươi ngon vô cùng, nấu được nhiều món ngon và mang lại nhiều lợi ích hữu dụng trong làm đẹp mà chị em nào cũng thích. Rau má xay sinh tố thì mát, đẹp da, rau má đắp mặt nạ thì giúp trị mụn, có thể nói đây là món rau không thể thiếu trong bếp của các chị em.',9500,GETDATE(),GETDATE()+1,N'https://t3.ftcdn.net/jpg/00/93/76/88/240_F_93768806_gvgKsIrKZdURxM0d25Y6W0cFsS9aRFYy.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Cải thìa 300g',2,3,N'Cải thìa baby là giống rau được nuôi trồng và đóng gói theo những tiêu chuẩn nghiêm ngặt, bảo đảm các tiêu chuẩn xanh - sạch, chất lượng và an toàn với người dùng. Cải thìa nhỏ giòn ngọt, chứa nhiều chất xơ nên thường được dùng để luộc hoặc xào để giữ được độ tươi ngon nhất cho rau.',13700,GETDATE(),GETDATE()+1,N'https://t3.ftcdn.net/jpg/04/37/86/36/240_F_437863668_QoFTi0PrnzxIwQ1TTPg2Ae1dW5K2G1SW.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Súp lơ xanh 300g',2,3,N'Súp lơ xanh còn gọi là bông cải xanh, nó thuộc loài cải bắp dại, có hoa lớn ở đầu và được sử dụng làm rau. Nó rất tốt cho sức khỏe, chúng chứa nhiều vitamin A, C và E hơn các loại rau củ xanh khác, giúp bổ sung dinh dưỡng và tăng cường sức đề kháng cho cơ thể. ',23000,GETDATE(),GETDATE()+1,N'https://t3.ftcdn.net/jpg/01/98/71/84/240_F_198718474_qji1GoXe6cFyP6QRfBaHmvVvvQMFrTgY.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Rau muống hạt baby 300g',2,3,N'Rau muống hạt baby là rau non nên có độ giòn, ngọt hơn so với rau muống thông thường, quy trình trồng nghiêm ngặt, đảm bảo an toàn và chất lượng đến tay người tiêu dùng. Rau muống hạt baby có hàm lượng chất dinh dưỡng cao, đặc biệt là sắt và chất xơ, thường được dùng để luộc, xào,...',13700,GETDATE(),GETDATE()+1,N'https://t3.ftcdn.net/jpg/00/80/75/16/240_F_80751657_V8p8f8tnJoVl78Vdd0zzYulc2GrwOzlk.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Chuối già Nam Mỹ 1kg',3,2,N'Loại chuối già được nhiều khách hàng ưa chuộng. Chuối chứa nhiều chất dinh dưỡng như kali, chất xơ, vitamin,... Chuối ăn ngon nhất khi chín vàng, trên vỏ bắt đầu có đốm nâu, khi đó chuối sẽ rất ngọt...Cam kết đúng khối lượng, bao bì kín đáo, an toàn và bảo đảm hợp vệ sinh.',28000,GETDATE(),GETDATE()+1,N'https://t4.ftcdn.net/jpg/00/81/63/27/240_F_81632784_dywiaX7xqRp7KDqMluwgqlkykvz3aK03.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Thanh long ruột đỏ 1.5kg',3,2,N'Thanh long ruột đỏ là trái cây có vẻ ngoài bóng bẩy đẹp mắt bên trong là thịt quả lòng đỏ vô cùng hấp dẫn. Thanh long ngon nhất khi vỏ màu đỏ đậm, quả chắc sẽ rất ngọt và mọng nước. Thanh long ruột đỏ chất lượng, bao bì sạch sẽ vệ sinh',31300,GETDATE(),GETDATE()+1,N'https://t4.ftcdn.net/jpg/03/10/48/41/240_F_310484158_aLPT0Xo54zk0WWTJrQhZ5ARtKWYX9F9Z.jpg')
+INSERT INTO Products(productName, supId, cateId, information, price, mgf, exp, productImage)
+VALUES(N'Kiwi vàng Zespri hộp 500g',3,2,N'Kiwi vàng Zespri là loại trái cây Siêu dưỡng chất với hơn 20 loại Vitamin và khoáng chất thiết yếu, cần thiết cho sức khoẻ. Đạt tiêu chuẩn xuất khẩu toàn cầu với chất lượng đồng đều, nhập khẩu từ Newzealand. Kiwi Vàng Zespri mọng nước, có vị chua ngọt thanh mát, trái càng chín thì độ ngọt càng cao.',89000,GETDATE(),GETDATE()+1,N'https://t3.ftcdn.net/jpg/02/61/79/90/240_F_261799003_cJgPc7AVsYPWvCRyaPdYjyskQG9fnmlG.jpg')
 SELECT * FROM Products
+
+INSERT INTO Review(product_id,name,email,content,created) 
+	VALUES (10,'Kim Vy','kimvy@gmail.com',N'An toàn, sạch sẽ!','2022-10-10');
+INSERT INTO review(product_id,name,email,content,created) 
+	VALUES (9,'Kim Vy','kimvy@gmail.com',N'Sản phẩm chất lượng','2022-10-11');
+INSERT INTO review(product_id,name,email,content,created) 
+	VALUES (12,'Kim Vy','kimvy@gmail.com',N'Ngon, lần sau tôi sẽ mua tiếp','2022-10-12');
+SELECT * FROM Review
 
 INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Huynh Gia Bao', N'HCM', N'0324342564', 0, N'bao')
 INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Dang Nguyen Vu', N'HCM', N'0343458193', 1, N'vu')
