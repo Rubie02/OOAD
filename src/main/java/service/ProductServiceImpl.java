@@ -51,4 +51,11 @@ public class ProductServiceImpl implements IProductService{
 		return productDao.getLast();
 	}
 
+	@Override
+	public void updateProduct(String pid, String name, int supId, int cateId, String information, float price,
+			String mgf, String exp, String productImage) {
+		productDao.updateProduct(pid, name, supId, cateId, information, price, mgf, exp, productImage);
+		
+	}
+
 }

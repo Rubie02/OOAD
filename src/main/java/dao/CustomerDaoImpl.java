@@ -29,5 +29,42 @@ public class CustomerDaoImpl extends DBConnection implements ICustomerDao{
 		}
 		return null;
 	}
+	@Override
+	public void insert(String cusName, String cusAddress, String cusPhoneNumber, String username) {
+		String query = "INSERT INTO [dbo] . [Customers] \n"
+				+ "([cusName],[cusAddress],[cusPhoneNumber],[rank], [username])\n"
+				+ "VALUES(?,?,?,0,?)";
+		try {
+			conn = new DBConnection().getConnectionW();
+			ps=conn.prepareStatement(query);
+			ps.setString(1,cusName);
+			ps.setString(2,cusAddress);
+			ps.setString(3,cusPhoneNumber);
+			ps.setString(4,username);
+			ps.executeUpdate();
+			
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	@Override
+	public Customer getUsername(String username) {
+		String query = "SELECT * FROM Customers WHERE username=?";
+		try {
+			conn = new DBConnection().getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6));
+			}
+		} catch (Exception e) {
+
+		}
+		return null;
+	}
 
 }

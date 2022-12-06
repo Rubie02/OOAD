@@ -38,9 +38,9 @@
 
         <div class="box">
             <h3>extra links</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my order </a>
+            <a href="order_list"> <i class="fas fa-arrow-right"></i> my order </a>
             <a href="#"> <i class="fas fa-arrow-right"></i> my favorite </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> my wishlist </a>
+            <a href="buy_in_cart"> <i class="fas fa-arrow-right"></i> my information </a>
             <a href="#"> <i class="fas fa-arrow-right"></i> my account </a>
             <a href="#"> <i class="fas fa-arrow-right"></i> terms or use </a>
         </div>

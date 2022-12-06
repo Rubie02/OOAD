@@ -9,5 +9,6 @@ public interface IBlogService {
 	public Blog getBlogByID(String bID);
 	public void insertBlog(String details,  String blogName, String blogImage);
 	public void deleteBlog(String bId);
+	public void updateBlog(String blogId, String details, String blogName, String blogImage);
 
 }

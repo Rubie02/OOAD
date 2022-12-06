@@ -8,7 +8,7 @@
     <!-- Site meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cart</title>
+    <title>Order</title>
     <!-- CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -18,8 +18,8 @@
 <body>
 <jsp:include page="/views/customer/commons/header.jsp"></jsp:include>
 <div class="heading">
-    <h1>about cart</h1>
-    <p> <a href="Home">home >></a> about cart </p>
+    <h1>about order</h1>
+    <p> <a href="Home">home >></a> about order </p>
 </div>
 <div class="container mb-4">
     <div class="row">
@@ -30,7 +30,7 @@
                         <tr>
                             <th scope="col" class="info">Image</th>
                             <th scope="col"class="content">Product</th>
-                            <th scope="col"class="content">Status</th>
+                            <th scope="col"class="content">Date</th>
                             <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
                             <th> </th>
@@ -44,9 +44,9 @@
                             <td>In stock</td>
                             <td>
                             <div class="form-group d-flex justify-content-between">
-                            	<a class="btn btn-sm btn decre" href="quantity_inc_dec?action=dec&id=${map.value.product.productId }"><i class="fas fa-minus-square"></i></a>
+                        
                             		<input class="form-control" type="text" value="${map.value.quantity }" />
-                            	<a class="btn btn-sm btn incre" href="quantity_inc_dec?action=inc&id=${map.value.product.productId }"><i class="fas fa-plus-square"></i></a>
+                            	
                             </div >
                             </td>
                             <td class="text-right">${map.value.product.price*map.value.quantity } VND </td>
@@ -77,8 +77,8 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                <a href="buy">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Buy</button>
+                <a href="Cart">
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Go back to Cart</button>
                     </a>
                 </div>
             </div>

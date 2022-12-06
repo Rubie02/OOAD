@@ -149,11 +149,13 @@ INSERT INTO Accounts(username, password, type, email) VALUES(N'bao', N'1',0, N'b
 INSERT INTO Accounts(username, password, type, email) VALUES(N'vu', N'1',0, N'vu456@gmail.com')
 INSERT INTO Accounts(username, password, type, email) VALUES(N'thuy', N'1',0, N'thuy456@gmail.com')
 SELECT * FROM Accounts
+UPDATE Accounts SET username=N'vu', password=1, type=0, email=N'vuvuvu@gmail.com' WHERE username=N'vu'
 
 INSERT INTO Blogs(details, blogName, blogImage) VALUES(N'Rau củ là các loại thực vật đã bị biến đổi để thích ứng với việc dự trữ chất dinh dưỡng để cây phát triển. Các loại củ thường dùng làm thực phẩm cho con người phải kể đến như: củ khoai lang, củ cà rốt, củ su, củ khoai môn, khoai tây, củ dền,...', N'Rau củ là gì?', N'https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%209/Ng%C3%A0y_16/Thanh/3538_Rau_1.jpg') 
 INSERT INTO Blogs(details, blogName, blogImage) VALUES(N'Trái cây là một trong những loại thực phẩm cần có trong chế độ ăn uống lành mạnh, không chỉ đa dạng, có nguồn vitamin dồi dào mà trái cây còn giúp cơ thể ngăn ngừa những tác động xấu đến sức khoẻ. Vì thế, bổ sung trái cây vào khẩu phần ăn hằng ngày bên cạnh rau xanh, củ quả là điều vô cùng quan trọng.', N'Trái cây', N'https://vinmec-prod.s3.amazonaws.com/images/20210606_142636_766862_tre-nen-an-qua-gi.max-1800x1800.jpg') 
 INSERT INTO Blogs(details, blogName, blogImage) VALUES(N'Rau lá là loại thực vật dùng làm thực phẩm cho con người nhưng chủ yếu sử dụng các loại lá trong món ăn. Rau lá, rau sống là những loại rau rất phổ biến bởi giá trị dinh dưỡng cao, dễ tìm mua, dễ ăn mà giá cả lại bình dân phù hợp với nhu cầu của nhiều gia đình.', N'Rau lá', N'http://hn.check.net.vn/data/product/mainimages/original/product9707.jpg') 
 SELECT * FROM Blogs
+UPDATE Blogs SET details=N'hao', blogName=N'shang', blogImage=N'nhi' WHERE blogId=N'1005'
 
 INSERT INTO Categories(blogId, cateName, description, cateImage) VALUES(1, N'Rau củ', N'Rau củ là các loại thực vật đã bị biến đổi để thích ứng với việc dự trữ chất dinh dưỡng để cây phát triển.', N'https://images.baodantoc.vn/uploads/2021/Th%C3%A1ng%209/Ng%C3%A0y_16/Thanh/3538_Rau_1.jpg')
 INSERT INTO Categories(blogId, cateName, description, cateImage) VALUES(2, N'Trái cây', N'Trái cây là một trong những loại thực phẩm cần có trong chế độ ăn uống lành mạnh, không chỉ đa dạng, có nguồn vitamin dồi dào mà trái cây còn giúp cơ thể ngăn ngừa những tác động xấu đến sức khoẻ.', N'https://vinmec-prod.s3.amazonaws.com/images/20210606_142636_766862_tre-nen-an-qua-gi.max-1800x1800.jpg')
@@ -182,7 +184,7 @@ SELECT * FROM Products
 INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Huynh Gia Bao', N'HCM', N'0324342564', 0, N'bao')
 INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Dang Nguyen Vu', N'HCM', N'0343458193', 1, N'vu')
 INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Ho Bich Thuy', N'HCM', N'0923485325', 2, N'thuy')
-SELECT * FROM Customers WHERE cusId=2
+SELECT * FROM Customers
 
 INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary, hireDate) VALUES(N'Bach', N'DN', N'0293423452', 10000000, N'2022-12-4')
 INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary, hireDate) VALUES(N'Hoai', N'PY', N'0293423452', 10000000, N'2022-12-4')
@@ -190,7 +192,7 @@ INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary
 INSERT INTO Employees(employeeName, employeeAddress, employeePhoneNumber, salary, hireDate) VALUES(N'Hien', N'QN', N'0293423452', 10000000, N'2022-12-4')
 SELECT * FROM Employees
 
-INSERT INTO Orders(cusId, orderDate, employeeId) VALUES(1, GETDATE(), 1)
+INSERT INTO Orders(orderId , cusId, orderDate, employeeId) VALUES(3, 1, GETDATE(), 1)
 INSERT INTO Orders(cusId, orderDate, employeeId) VALUES(2, GETDATE(), 1)
 UPDATE Orders set cusId=2, orderDate=GETDATE() WHERE orderId=2
 DELETE FROM Orders WHERE orderId=2
@@ -203,7 +205,7 @@ SELECT * FROM OrderDetails
 INSERT INTO OrderDetails(orderId, productId, unitPrice, quantity, discount)
 VALUES(2, 1, 14000, 2, 0)
 INSERT INTO OrderDetails(orderId, productId, unitPrice, quantity, discount)
-VALUES(1, 3, 16000, 2, 0)
+VALUES(3, 3, 16000, 2, 0)
 UPDATE OrderDetails SET orderId=3, productId=2, unitPrice=14500, quantity=3
 WHERE odId=3
 SELECT * FROM OrderDetails

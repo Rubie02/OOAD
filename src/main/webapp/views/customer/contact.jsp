@@ -60,7 +60,7 @@
             <h3>get in touch</h3>
             <div class="inputBox">
                 <input type="text" placeholder="enter your name" class="box">
-                <input type="email" placeholder="enter your email" class="box">
+                <input type="email" placeholder="enter your address" class="box">
             </div>
             <div class="inputBox">
                 <input type="number" placeholder="enter your number" class="box">

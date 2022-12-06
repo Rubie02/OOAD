@@ -101,7 +101,7 @@ public class CartItemDaoImpl extends DBConnection implements ICartItemDao{
 				Product pro = new Product();
 				OrderDetail cartItem = new OrderDetail();
 				cart.setCusId(cus);
-				cart.setOrderDate(rs.getDate("orderDate"));
+				cart.setOrderDate(rs.getString("orderDate"));
 				cart.setCusId(cus);
 				pro.setProductName(rs.getString("productName"));
 				pro.setPrice(rs.getFloat("price"));
@@ -134,7 +134,7 @@ public class CartItemDaoImpl extends DBConnection implements ICartItemDao{
 				Product pro = new Product();
 				OrderDetail cartItem = new OrderDetail();
 				cart.setCusId(cus);
-				cart.setOrderDate(rs.getDate("orderDate"));
+				cart.setOrderDate(rs.getString("orderDate"));
 				cart.setCusId(cus);
 				pro.setProductName(rs.getString("productName"));
 				pro.setPrice(rs.getFloat("price"));

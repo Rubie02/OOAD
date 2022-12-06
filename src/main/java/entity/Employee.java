@@ -8,12 +8,12 @@ public class Employee {
 	private String employeeAddress;
 	private String employeePhoneNumber;
 	private int salary;
-	private Date hireDate;
+	private String hireDate;
 	public Employee() {
 		super();
 	}
 	public Employee(int employeeId, String employeeName, String employeeAddress, String employeePhoneNumber, int salary,
-			Date hireDate) {
+			String hireDate) {
 		super();
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
@@ -52,10 +52,10 @@ public class Employee {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	public Date getHireDate() {
+	public String getHireDate() {
 		return hireDate;
 	}
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(String hireDate) {
 		this.hireDate = hireDate;
 	}
 	

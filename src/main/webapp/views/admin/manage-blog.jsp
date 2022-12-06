@@ -76,9 +76,7 @@ img {
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success"
 							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add
-								New Blog</span></a> <a href="#deleteEmployeeModal"
-							class="btn btn-danger" data-toggle="modal"><i
-							class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+								New Blog</span></a> 
 					</div>
 				</div>
 			</div>
@@ -107,7 +105,7 @@ img {
 							<td><a href="#editEmployeeModal" class="edit"
 								data-toggle="modal"><i class="material-icons"
 									data-toggle="tooltip" title="Edit">&#xE254;</i></a> <a
-								href="delete_blog?bId=${o.blogId}" class="delete" data-toggle="modal"><i
+								href="delete_blog?blogId=${o.blogId}" class="delete" data-toggle="modal"><i
 									class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 						</tr>
@@ -168,24 +166,28 @@ img {
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form action="update_blog" method="post">
 					<div class="modal-header">
 						<h4 class="modal-title">Edit Blog</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<div class="form-group">
-							<label>Name</label> <input name="name" type="text"
+					<div class="form-group">
+							<label>Id</label> <input name="bId" type="text"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Image</label> <input name="image" type="text"
+							<label>Name</label> <input name="blogName" type="text"
+								class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Image</label> <input name="blogImage" type="text"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Description</label>
-							<textarea name="description" class="form-control" required></textarea>
+							<textarea name="details" class="form-control" required></textarea>
 						</div>
 
 					</div>
@@ -198,31 +200,7 @@ img {
 			</div>
 		</div>
 	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="delete_blog" method="post">
-					<div class="modal-header">
-						<h4 class="modal-title">Delete Blog</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>Are you sure you want to delete these blogs?</p>
-						<p class="text-warning">
-							<small>This action cannot be undone.</small>
-						</p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel"> <input type="submit"
-							class="btn btn-danger" value="Delete">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 	<script src="${urljs }manager.js" type="text/javascript"></script>
 	<script>
 		

@@ -146,4 +146,28 @@ public class ProductDaoImpl extends DBConnection implements IProductDao{
 		return null;
 	}
 
+	@Override
+	public void updateProduct(String pid, String name, int supId, int cateId, String information, float price,
+			String mgf, String exp, String productImage) {
+		String query = "UPDATE Products SET productName=?, supId=?, cateId=?, information=?, price=?, mgf=?, exp=?, productImage=? WHERE productId=?";
+		try {
+			conn = new DBConnection().getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, name);
+			ps.setInt(2, supId);
+			ps.setInt(3, cateId);
+			ps.setString(4, information);
+			ps.setFloat(5, price);
+			ps.setString(6, mgf);
+			ps.setString(7, exp);
+			ps.setString(8, productImage);
+			ps.setString(9, pid);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
 }

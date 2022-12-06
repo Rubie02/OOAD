@@ -25,4 +25,16 @@ public class AccountServiceImpl implements IAccountService{
 		return accountDao.getAllAccount();
 	}
 
+	@Override
+	public void editAccount(String user, String pass, int type, String email) {
+		accountDao.editAccount(user, pass, type, email);
+		
+	}
+
+	@Override
+	public Account getAccByUsername(String username) {
+		// TODO Auto-generated method stub
+		return accountDao.getAccByUsername(username);
+	}
+
 }

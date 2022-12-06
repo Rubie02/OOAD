@@ -79,4 +79,22 @@ public class BlogDaoImpl extends DBConnection implements IBlogDao{
 		
 	}
 
+	@Override
+	public void updateBlog(String blogId, String details, String blogName, String blogImage) {
+		String query = "UPDATE Blogs SET details=?, blogName=?, blogImage=? WHERE blogId=?";
+		try {
+			conn = new DBConnection().getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, details);
+			ps.setString(2, blogName);
+			ps.setString(3, blogImage);
+			ps.setString(4, blogId);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
 }

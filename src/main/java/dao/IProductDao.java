@@ -12,4 +12,5 @@ public interface IProductDao {
 	public void deleteProduct(String pid);
 	public void insertProduct(String name, int supId, int cateId, String information, float price, String mgf, String exp, String productImage);
 	public Product getLast();
+	public void updateProduct(String pid, String name, int supId, int cateId, String information, float price, String mgf, String exp, String productImage);
 }

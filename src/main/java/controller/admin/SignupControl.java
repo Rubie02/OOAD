@@ -30,7 +30,8 @@ public class SignupControl extends HttpServlet {
         
         if(!pass.equals(re_pass))
         {
-        	response.sendRedirect("/views/admin/login.jsp");
+        	request.setAttribute("mess", "Password not match, please sign up again with the same password");
+        	request.getRequestDispatcher("/views/admin/login.jsp").forward(request, response);
         }
         else
         {
@@ -44,7 +45,8 @@ public class SignupControl extends HttpServlet {
         	}
         	else 
         	{
-        		response.sendRedirect("/views/admin/login.jsp");
+        		request.setAttribute("mess", "Account existed, please sign up with another username");
+        		request.getRequestDispatcher("/views/admin/login.jsp").forward(request, response);
         	}
         }
     }

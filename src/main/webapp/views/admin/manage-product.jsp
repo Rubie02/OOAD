@@ -34,8 +34,7 @@
                             <h2>Manage <b>Product</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                            <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>					
                         </div>
                     </div>
                 </div>
@@ -152,39 +151,43 @@
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form action="update_product" method="post">
                         <div class="modal-header">						
                             <h4 class="modal-title">Edit Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                         <div class="modal-body">					
+                         <div class="modal-body">	
+                         <div class="form-group">
+                                <label>Id</label>
+                                <input name="productId" type="text" value="hahaha" class="form-control" required>
+                            </div>				
                             <div class="form-group">
                                 <label>Name</label>
-                                <input name="productName" type="text" class="form-control" required>
+                                <input name="productName" type="text" value="${detail.productName }" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input name="productImage" type="text" class="form-control" required>
+                                <input name="productImage" type="text" value="${detail.productImage }" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <input name="price" type="text" class="form-control" required>
+                                <input name="price" type="text" value="${detail.price }" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Supplier Id</label>
-                                <input name="supId" type="text" class="form-control" required>
+                                <input name="supId" type="text" value="${detail.supId }" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>MGF</label>
-                                <input name="mgf" type="text" class="form-control" required>
+                                <input name="mgf" type="text" value="${detail.mgf }" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>EXP</label>
-                                <input name="exp" type="text" class="form-control" required>
+                                <input name="exp" type="text" value="${detail.exp }" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="information" class="form-control" required></textarea>
+                                <textarea name="information" value="${detail.information }" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
@@ -195,31 +198,16 @@
                                 </select>
                             </div>
                             </div>
+                            <div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal"
+							value="Cancel"> <input type="submit" class="btn btn-info"
+							value="Save">
+					</div>
                     </form>
                 </div>
             </div>
         </div>
-        <!-- Delete Modal HTML -->
-        <div id="deleteEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Delete Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">					
-                            <p>Are you sure you want to delete these products?</p>
-                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+       
         <script src="${urljs }manager.js" type="text/javascript"></script>
         <script>
                

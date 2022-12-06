@@ -19,13 +19,14 @@ public class CartDaoImpl extends DBConnection implements ICartDao{
 	ICustomerService cusS = new CustomerServiceImpl();
 	@Override
 	public void insert(Order cart) {
-		String query="INSERT INTO Orders(cusId, orderDate, employeeId) VALUES(?,?,?)";
+		String query="INSERT INTO Orders(orderId, cusId, orderDate, employeeId) VALUES(?,?,?,?)";
 		try {
 			conn = new DBConnection().getConnectionW();
 			ps=conn.prepareStatement(query);
-			ps.setInt(1,cart.getCusId().getCusId());
-			ps.setDate(2,cart.getOrderDate());
-			ps.setInt(3,cart.getEmployeeId().getEmployeeId());
+			ps.setInt(1,cart.getOrderId());
+			ps.setInt(2,cart.getCusId().getCusId());
+			ps.setString(3,cart.getOrderDate());
+			ps.setInt(4,cart.getEmployeeId().getEmployeeId());
 			ps.executeUpdate();
 			
 		}
@@ -41,7 +42,7 @@ public class CartDaoImpl extends DBConnection implements ICartDao{
 			conn = new DBConnection().getConnectionW();
 			ps=conn.prepareStatement(query);
 			ps.setInt(1,cart.getCusId().getCusId());
-			ps.setDate(2,cart.getOrderDate());
+			ps.setString(2,cart.getOrderDate());
 			ps.setInt(3,cart.getEmployeeId().getEmployeeId());
 			ps.executeUpdate();
 			
@@ -82,7 +83,7 @@ public class CartDaoImpl extends DBConnection implements ICartDao{
 				
 				Order cart = new Order();
 				cart.setOrderId(rs.getInt("orderId"));
-				cart.setOrderDate(rs.getDate("orderDate"));
+				cart.setOrderDate(rs.getString("orderDate"));
 				cart.setCusId(cus);
 				return cart;
 				}
@@ -106,7 +107,7 @@ public class CartDaoImpl extends DBConnection implements ICartDao{
 				
 				Order cart = new Order();
 				cart.setOrderId(rs.getInt("orderId"));
-				cart.setOrderDate(rs.getDate("orderDate"));
+				cart.setOrderDate(rs.getString("orderDate"));
 				cart.setCusId(cus);
 				list.add(cart);
 			}

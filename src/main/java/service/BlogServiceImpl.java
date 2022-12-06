@@ -32,4 +32,10 @@ public class BlogServiceImpl implements IBlogService{
 		blogDao.deleteBlog(bId);
 	}
 
+	@Override
+	public void updateBlog(String blogId, String details, String blogName, String blogImage) {
+		blogDao.updateBlog(blogId, details, blogName, blogImage);
+		
+	}
+
 }

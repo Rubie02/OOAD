@@ -23,9 +23,9 @@ public class DeleteBlogControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String bId = request.getParameter("bId");
+        String blogId = request.getParameter("blogId");
         
-        blogService.deleteBlog(bId);
+        blogService.deleteBlog(blogId);
         response.sendRedirect("manager_blog");
        
     }

@@ -1,16 +1,16 @@
 package entity;
 
-import java.sql.Date;
+
 
 public class Order{ //Cart
 	private int orderId;
 	private Customer cusId;
-	private Date orderDate;
+	private String orderDate;
 	private Employee employeeId;
 	public Order() {
 		super();
 	}
-	public Order(int orderId, Customer cusId, Date orderDate, Employee employeeId) {
+	public Order(int orderId, Customer cusId, String orderDate, Employee employeeId) {
 		super();
 		this.orderId = orderId;
 		this.cusId = cusId;
@@ -29,10 +29,10 @@ public class Order{ //Cart
 	public void setCusId(Customer cusId) {
 		this.cusId = cusId;
 	}
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 	public Employee getEmployeeId() {
@@ -41,6 +41,7 @@ public class Order{ //Cart
 	public void setEmployeeId(Employee employeeId) {
 		this.employeeId = employeeId;
 	}
+	
 	
 	
 }

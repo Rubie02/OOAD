@@ -20,11 +20,14 @@ public class ManageAccountControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String user = request.getParameter("user");
 
         List<Account> list = accountService.getAllAccount();
+        Account account = accountService.getAccByUsername(user);
         
         
         request.setAttribute("listP", list);
+        request.setAttribute("account", account);
         request.getRequestDispatcher("/views/admin/manage-account.jsp").forward(request, response);
     }
 

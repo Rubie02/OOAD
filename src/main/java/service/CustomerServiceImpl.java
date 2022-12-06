@@ -11,5 +11,15 @@ public class CustomerServiceImpl implements ICustomerService{
 		
 		return cusD.get(id);
 	}
+	@Override
+	public void insert(String cusName, String cusAddress, String cusPhoneNumber, String username) {
+		cusD.insert(cusName, cusAddress, cusPhoneNumber, username);
+		
+	}
+	@Override
+	public Customer getUsername(String username) {
+		// TODO Auto-generated method stub
+		return cusD.getUsername(username);
+	}
 
 }
