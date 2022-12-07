@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:url value="/views/customer/css/" var="url"></c:url>
-<c:url value="/views/customer/image/" var="urlImage"></c:url>
+<c:url value="/views/customer/images/" var="urlImage"></c:url>
 <c:url value="/views/customer/js/" var="urljs"></c:url>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,79 +11,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Blog</title>
 
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome 5 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="${url }style.css">
 
 </head>
-<body>
-    
-<!-- header section starts  -->
+<body class="contact">
+    <!-- Navbar Section Start -->
+    <jsp:include page="/views/customer/commons/header.jsp"></jsp:include>
+    <!-- Navbar Section Exit -->
 
-<jsp:include page="/views/customer/commons/header.jsp"></jsp:include>
-
-<!-- header section ends -->
-
-<div class="heading">
-    <h1>about Blog</h1>
-    <p> <a href="Home">home >></a> about blog </p>
-</div>
-
-<section class="about">
-
-    <div class="image">
-        <img src="${detailblog.blogImage}" alt="">
-    </div>
-
-    <div class="content">
-        <span>welcome to our blog</span>
-        <h3>${detailblog.blogName}</h3>
-        <p>${detailblog.details }</p>
-        <p>Don't hesitate! Shopping time comming!</p>
-        <a href="Shop" class="btn">Shop now</a>
-    </div>
-
-</section>
-
-<section class="blogs">
-
-    <h1 class="title"> our <span>blogs</span> <a href="Blog">view all >></a> </h1>
-
-    <div class="box-container">
-<c:forEach items="${listB}" var="o">
-        <div class="box">
-            <div class="image">
-                <img src="${o.blogImage}" alt="">
-            </div>
-            <div class="content">
-                <div class="icons">
-                    <a href="#"> <i class="fas fa-calendar"></i> organic fruit </a>
-                    <a href="#"> <i class="fas fa-user"></i> by admin </a>
-                </div>
-                <h3>${o.blogName}</h3>
-                <p>Click "Read More" to read the blog</p>
-                <a href="Detailblog?bID=${o.blogId }" class="btn">read more</a>
+    <!-- banner Section start -->
+    <section class="banner_section">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Bài viết</h1>
             </div>
         </div>
-</c:forEach>
-        
-    </div>
+    </section>
+    <!-- banner section exit -->
+
+    <!-- Gallery Section Start-->
+    <section class="product_section">
+        <div class="container">
+            
+            <div class="row align-items-center py-5">
+                <div class="col-xl-5 col-lg-6 col-12 mb-5">
+                    <div class="card border-0 me-lg-5">
+                        <img src="${detailblog.blogImage }" alt="products">
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6 col-12 mb-5">
+                    <div class="product-content">
+                        <h2>${detailblog.blogName }</h2>
+                        <div class="product-details">
+                            <p>${detailblog.details }</p>                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center py-5">
+                <div class="col-xl-7 col-lg-6 col-12 mb-5  order-2 order-lg-1">
+                    <div class="product-content">
+                        <h2>Bình luận</h2>
+                        <div class="aa-product-review-area">
+                        <ul class="aa-review-nav">
+                         
+                            <c:forEach items="${reviewbyid}" var="review">
+                                <li>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h5 class="media-heading"><strong>${review.name}</strong> - <span>${review.created}</span></h5>
+                                            <div class="aa-product-rating">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <p>${review.content}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                        </div>
+                        <div class="col-12 contact-form">
+	                    <div class="row">
+	                        <div class="col-lg-7 mb-5">
+	                            <form class="row g-3" method="post" action="${pageContext.request.contextPath}/Review?pid=${detail.productId }">
+	                                <div class="col-md-6 mb-4">
+	                                    <input type="text" class="form-control" name="name" placeholder="Họ và tên *" required="">
+	                                </div>
+	                                <div class="col-md-6 mb-4">
+	                                    <input type="email" class="form-control" name="email" placeholder="Email *" required="">
+	                                </div>
+	                                
+	                                <div class="col-12 mb-4">
+	                                    <textarea class="form-control" name="content" placeholder="Bình luận"></textarea>
+	                                </div>
+	                                <div class="col-12">
+	                                    <button type="submit" class="btn main-btn">Gửi đánh giá</button>
+	                                </div>
+	                            </form>
+	                        </div>
+	                        
+	                    </div>
+                </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6 col-12 mb-5 order-1 order-lg-2">
+                    <div class="card border-0 ms-lg-5">
+                        <img src="${detailblog.blogImage }" alt="product" class="card-img-top">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
     
+    <section class="landing_product_section">
+        
+        <div class="container">
+            <h1 class="title"> Bài viết <span>khác</span> <a href="Shop">Xem tất cả >></a> </h1>
+    
+            <div class="row mx-0">
+                <c:forEach items="${listB}" var="o">
+                <div class="col-lg-3 col-sm-6 mb-5 d-flex align-items-stretch">
+                    <div class="card product-card">
+                        <div class="product-img">
+                            <img src="${o.blogImage }" class="card-img-top" />
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3>${o.blogName}</h3>
+                            
+                        </div>
+                        <div class="product-detail">
+                            <a href="Detailblog?bId=${o.blogId }" class="btn main-btn">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                </c:forEach>
+            </div>
+    
+        </div>
+    </section>
+    <!-- Gallery Section Exit -->
 
-</section>
+    <!-- Footer section Start-->
+    <jsp:include page="/views/customer/commons/footer.jsp"></jsp:include>
+    <!-- Footer Section Exit  -->
 
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- footer section starts  -->
+    <!-- Lightbox Pupup -->
+    <script src="js/lightbox.js"></script>
 
-<jsp:include page="/views/customer/commons/footer.jsp"></jsp:include>
+    <!-- Bootstrap 5 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
-<!-- footer section ends -->
-
-
-<!-- custom css file link  -->
-<script src="${urljs }script.js"></script>
-
+    <!-- Custom JS -->
+    <script src="${urljs }main.js"></script>
 </body>
+
 </html>

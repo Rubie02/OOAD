@@ -11,16 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Category;
 import entity.Product;
+import entity.Review;
 import service.CategoryServiceImpl;
 import service.ICategoryService;
 import service.IProductService;
 import service.ProductServiceImpl;
+import service.ReviewService;
+import service.ReviewServicesImpl;
+
 
 @SuppressWarnings("serial")
 @WebServlet(name = "ProductDetailCusControl", urlPatterns = {"/product_detail"})
 public class ProductDetailCusControl extends HttpServlet {
 	IProductService productService = new ProductServiceImpl();
 	ICategoryService categoryService = new CategoryServiceImpl();
+	ReviewService reviewService = new ReviewServicesImpl();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -29,6 +34,8 @@ public class ProductDetailCusControl extends HttpServlet {
         List<Category> listC = categoryService.getAllCategory();
         Product last = productService.getLast();
         List<Product> listP = productService.getAllProduct();
+        List<Review> reviewById = reviewService.getReviewById(Integer.parseInt(id));
+		request.setAttribute("reviewbyid", reviewById);
         
         request.setAttribute("detail", p);
         request.setAttribute("listP", listP);

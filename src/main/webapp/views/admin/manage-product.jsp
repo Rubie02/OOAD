@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.min.css">
+    	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.min.js"></script>
         <link href="${url }manager.css" rel="stylesheet" type="text/css"/>
         <style>
             img{
@@ -26,6 +28,7 @@
         </style>
     <body>
      <jsp:include page="/views/admin/menu.jsp"></jsp:include>
+     
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -34,7 +37,8 @@
                             <h2>Manage <b>Product</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>					
+                            <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
                         </div>
                     </div>
                 </div>
@@ -71,7 +75,7 @@
                                 <td>${o.price} $</td>
                                 <td>
                                     <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="delete?pid=${o.productId}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="#" onclick="testDialogConfirm(${o.productId})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -114,24 +118,12 @@
                                 <input name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Supplier Id</label>
-                                <input name="supId" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>MGF</label>
-                                <input name="mgf" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>EXP</label>
-                                <input name="exp" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
                                 <label>Description</label>
                                 <textarea name="information" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select name="cateId" class="form-select" aria-label="Default select example">
+                                <select name="category" class="form-select" aria-label="Default select example">
                                     <c:forEach items="${listC}" var="o">
                                         <option value="${o.cateId}">${o.cateName}</option>
                                     </c:forEach>
@@ -151,65 +143,79 @@
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="update_product" method="post">
+                    <form>
                         <div class="modal-header">						
                             <h4 class="modal-title">Edit Product</h4>
                             	
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             
                         </div>
+<<<<<<< HEAD
                          <div class="modal-body">	
                          <div class="form-group">
                                 <label>Id</label>
                                 <input name="productId" type="text" value="${detail.productId }" class="form-control" required>
                             </div>				
+=======
+                        <div class="modal-body">
+                        					
+>>>>>>> 9f7d4d3045eb875bc21f06ab85f9ebaaa0943493
                             <div class="form-group">
+                            
                                 <label>Name</label>
-                                <input name="productName" type="text" value="${detail.productName }" class="form-control" required>
+                                
+                                <input name="productName" type="text" value="${detail.productName}" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input name="productImage" type="text" value="${detail.productImage }" class="form-control" required>
+                                <input name="productImage" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <input name="price" type="text" value="${detail.price }" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Supplier Id</label>
-                                <input name="supId" type="text" value="${detail.supId }" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>MGF</label>
-                                <input name="mgf" type="text" value="${detail.mgf }" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>EXP</label>
-                                <input name="exp" type="text" value="${detail.exp }" class="form-control" required>
+                                <input name="price" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="information" value="${detail.information }" class="form-control" required></textarea>
+                                <textarea name="information" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select name="cateId" class="form-select" aria-label="Default select example">
+                                <select name="category" class="form-select" aria-label="Default select example">
                                     <c:forEach items="${listC}" var="o">
                                         <option value="${o.cateId}">${o.cateName}</option>
                                     </c:forEach>
                                 </select>
                             </div>
+                            
                             </div>
-                            <div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel"> <input type="submit" class="btn btn-info"
-							value="Save">
-					</div>
+                            
                     </form>
                 </div>
             </div>
         </div>
-       
+        <!-- Delete Modal HTML -->
+        <script type="text/javascript">
+    	function testDialogConfirm(productId){
+    		Swal.fire({
+    			  title: 'Bạn có chắc chắn muốn xóa không?',
+    			  
+    			  icon: 'warning',
+    			  showCancelButton: true,
+    			  confirmButtonColor: '#3085d6',
+    			  cancelButtonColor: '#d33',
+    			  confirmButtonText: 'Yes!'
+    			}).then((result) => {
+    			  if (result.isConfirmed) {
+    				window.location.href="delete?pid=" + productId;
+    			    Swal.fire(
+    			      'Sản phẩm đã bị xóa',
+    			      '',
+    			      'success'
+    			    )
+    			  }
+    			})
+    	}
+    </script>
         <script src="${urljs }manager.js" type="text/javascript"></script>
         <script>
                

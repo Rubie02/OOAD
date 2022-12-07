@@ -22,6 +22,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.min.js"></script>
 <link href="${url }manager.css" rel="stylesheet" type="text/css" />
 <style>
 img {
@@ -76,7 +78,9 @@ img {
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success"
 							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add
-								New Blog</span></a> 
+								New Blog</span></a> <a href="#deleteEmployeeModal"
+							class="btn btn-danger" data-toggle="modal"><i
+							class="material-icons">&#xE15C;</i> <span>Delete</span></a>
 					</div>
 				</div>
 			</div>
@@ -105,7 +109,7 @@ img {
 							<td><a href="load_blog?blogId=${o.blogId }" class="edit"
 								data-toggle="modal"><i class="material-icons"
 									data-toggle="tooltip" title="Edit">&#xE254;</i></a> <a
-								href="delete_blog?blogId=${o.blogId}" class="delete" data-toggle="modal"><i
+								href="#" onclick="testDialogConfirm(${o.blogId})" class="delete" data-toggle="modal"><i
 									class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 						</tr>
@@ -166,28 +170,24 @@ img {
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="update_blog" method="post">
+				<form>
 					<div class="modal-header">
 						<h4 class="modal-title">Edit Blog</h4>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-					<div class="form-group">
-							<label>Id</label> <input name="bId" type="text"
+						<div class="form-group">
+							<label>Name</label> <input name="name" type="text"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Name</label> <input name="blogName" type="text"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Image</label> <input name="blogImage" type="text"
+							<label>Image</label> <input name="image" type="text"
 								class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Description</label>
-							<textarea name="details" class="form-control" required></textarea>
+							<textarea name="description" class="form-control" required></textarea>
 						</div>
 
 					</div>
@@ -200,7 +200,29 @@ img {
 			</div>
 		</div>
 	</div>
-	
+	<!-- Delete Modal HTML -->
+	<script type="text/javascript">
+    	function testDialogConfirm(bId){
+    		Swal.fire({
+    			  title: 'Bạn có chắc chắn muốn xóa không?',
+    			  
+    			  icon: 'warning',
+    			  showCancelButton: true,
+    			  confirmButtonColor: '#3085d6',
+    			  cancelButtonColor: '#d33',
+    			  confirmButtonText: 'Yes!'
+    			}).then((result) => {
+    			  if (result.isConfirmed) {
+    				window.location.href="delete_blog?bId=" + bId;
+    			    Swal.fire(
+    			      'Blog đã bị xóa',
+    			      '',
+    			      'success'
+    			    )
+    			  }
+    			})
+    	}
+    </script>
 	<script src="${urljs }manager.js" type="text/javascript"></script>
 	<script>
 		
