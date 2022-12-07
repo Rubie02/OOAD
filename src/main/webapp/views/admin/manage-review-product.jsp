@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manager Blog</title>
+<title>Manager Review Product</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet"
@@ -22,7 +22,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.min.js"></script>
 <link href="${url }manager.css" rel="stylesheet" type="text/css" />
 <style>
@@ -72,13 +72,12 @@ img {
 				<div class="row">
 					<div class="col-sm-6">
 						<h2>
-							Manage <b>Blogs</b>
+							Manage <b>Review Product</b>
 						</h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success"
-							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add
-								New Blog</span></a> <a href="#deleteEmployeeModal"
+							data-toggle="modal"><i class="material-icons">&#xE147;</i></a> <a href="#deleteEmployeeModal"
 							class="btn btn-danger" data-toggle="modal"><i
 							class="material-icons">&#xE15C;</i> <span>Delete</span></a>
 					</div>
@@ -90,27 +89,30 @@ img {
 						<th><span class="custom-checkbox"> <input
 								type="checkbox" id="selectAll"> <label for="selectAll"></label>
 						</span></th>
-						<th>Topic</th>
-						<th>Blog Name</th>
-						<th>Image</th>
-						<th>Actions</th>
+						<th>Review ID</th>
+						<th>Product ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Content</th>
+						<th>Created</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${listP}" var="o">
+					<c:forEach items="${reviewlist}" var="o">
 						<tr>
 							<td><span class="custom-checkbox"> <input
 									type="checkbox" id="checkbox1" name="options[]" value="1">
 									<label for="checkbox1"></label>
 							</span></td>
-							<td>${o.blogName}</td>
-							<td>${o.blogName}</td>
-							<td><img src="${o.blogImage}"></td>
-							<td><a href="#editEmployeeModal" class="edit"
-								data-toggle="modal"><i class="material-icons"
-									data-toggle="tooltip" title="Edit">&#xE254;</i></a> <a
-								href="#" onclick="testDialogConfirm(${o.blogId})" class="delete" data-toggle="modal"><i
-									class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+							<td>${o.id}</td>
+							<td>${o.product_id}</td>
+							<td>${o.name}</td>
+							<td>${o.email}"</td>
+							<td>${o.content}"</td>
+							<td>${o.created}"</td>
+							<td><a
+								href="#" onclick="testDialogConfirm(${o.id})" class="delete" data-toggle="modal">
+								<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -133,76 +135,10 @@ img {
 		</div>
 	</div>
 	<!-- Edit Modal HTML -->
-	<div id="addEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="add_blog" method="post">
-					<div class="modal-header">
-						<h4 class="modal-title">Add Blog</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Name</label> <input name="name" type="text"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Image</label> <input name="image" type="text"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Description</label>
-							<textarea name="description" class="form-control" required></textarea>
-						</div>
-
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel"> <input type="submit"
-							class="btn btn-success" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Edit Blog</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Name</label> <input name="name" type="text"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Image</label> <input name="image" type="text"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Description</label>
-							<textarea name="description" class="form-control" required></textarea>
-						</div>
-
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="Cancel"> <input type="submit" class="btn btn-info"
-							value="Save">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 	<!-- Delete Modal HTML -->
 	<script type="text/javascript">
-    	function testDialogConfirm(bId){
+    	function testDialogConfirm(id){
     		Swal.fire({
     			  title: 'Bạn có chắc chắn muốn xóa không?',
     			  
@@ -213,9 +149,9 @@ img {
     			  confirmButtonText: 'Yes!'
     			}).then((result) => {
     			  if (result.isConfirmed) {
-    				window.location.href="delete_blog?bId=" + bId;
+    				window.location.href="delete_review?id=" + id;
     			    Swal.fire(
-    			      'Blog đã bị xóa',
+    			      'Review đã bị xóa',
     			      '',
     			      'success'
     			    )
@@ -223,10 +159,6 @@ img {
     			})
     	}
     </script>
-	<script src="${urljs }manager.js" type="text/javascript"></script>
-	<script>
-		
-	</script>
 	<jsp:include page="/views/admin/footer.jsp"></jsp:include>
 </body>
 </html>
