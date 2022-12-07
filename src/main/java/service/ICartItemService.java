@@ -10,4 +10,5 @@ public interface ICartItemService {
 	void delete(int id);
 	OrderDetail get(int id);
 	List<OrderDetail> getAll();
+	List<OrderDetail> getByCusId(int id);
 }

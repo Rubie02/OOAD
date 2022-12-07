@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import entity.Account;
 import entity.Customer;
 import service.CustomerServiceImpl;
 import service.ICustomerService;
@@ -34,8 +34,11 @@ public class BuyInCartControl extends HttpServlet{
 	    String cusPhoneNumber = req.getParameter("cusPhoneNumber");
 	    String username = req.getParameter("username");
 
-		cusS.insert(cusName, cusAddress, cusPhoneNumber, username); 
-	    req.getRequestDispatcher("/views/customer/order.jsp").forward(req, resp);
+		cusS.insert(cusName, cusAddress, cusPhoneNumber, username);
+		Account acc = (Account) req.getSession().getAttribute("acc");
+		Customer cus = cusS.getUsername(acc.getUsername());
+		req.setAttribute("cus", cus);
+	    req.getRequestDispatcher("/views/customer/order-to-ordered.jsp").forward(req, resp);
 
 
 	}

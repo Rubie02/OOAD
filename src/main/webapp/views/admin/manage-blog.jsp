@@ -102,7 +102,7 @@ img {
 							<td>${o.blogName}</td>
 							<td>${o.blogName}</td>
 							<td><img src="${o.blogImage}"></td>
-							<td><a href="#editEmployeeModal" class="edit"
+							<td><a href="load_blog?blogId=${o.blogId }" class="edit"
 								data-toggle="modal"><i class="material-icons"
 									data-toggle="tooltip" title="Edit">&#xE254;</i></a> <a
 								href="delete_blog?blogId=${o.blogId}" class="delete" data-toggle="modal"><i

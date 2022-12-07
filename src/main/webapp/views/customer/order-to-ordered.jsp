@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Check</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -79,9 +79,9 @@
                             <td>In stock</td>
                             <td>
                             <div class="form-group d-flex justify-content-between">
-                            	<a class="btn btn-sm btn decre" href="quantity_inc_dec?action=dec&id=${map.value.product.productId }"><i class="fas fa-minus-square"></i></a>
+
                             		<input class="form-control" type="text" value="${map.value.quantity }" />
-                            	<a class="btn btn-sm btn incre" href="quantity_inc_dec?action=inc&id=${map.value.product.productId }"><i class="fas fa-plus-square"></i></a>
+    
                             </div >
                             </td>
                             <td class="text-right">${map.value.product.price*map.value.quantity } VND </td>
@@ -110,16 +110,16 @@
 
     <div class="row">
 
-        <form action="buy_in_cart" method="post">
-            <h3>Please fill in your information</h3>
+        <form action="order_list" method="post">
+            <h3>Check your information</h3>
             <div class="inputBox">
-                <input name="cusName" type="text" placeholder="enter your name" value="${cus.cusName }" class="box" >
-                <input name="cusAddress" type="text" placeholder="enter your address" value="${cus.cusAddress }" class="box" >
-                <input name="cusPhoneNumber" type="text" placeholder="enter your phone number" value="${cus.cusPhoneNumber }" class="box" >
+                <input name="cusName" type="text" value="${cus.cusName }" class="box" >
+                <input name="cusAddress" type="text" value="${cus.cusAddress }" class="box" >
+                <input name="cusPhoneNumber" type="text" value="${cus.cusPhoneNumber }" class="box" >
                 <input name="username" type="text" class="box" value="${sessionScope.acc.username }">
             </div>
-            <a href="order_list">
-            	<input type="submit" value="Order" class="btn">
+            <a href="otod">
+            	<input type="submit" value="Buy" class="btn">
             </a>
         </form>
         	

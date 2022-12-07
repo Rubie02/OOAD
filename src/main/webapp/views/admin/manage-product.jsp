@@ -154,12 +154,14 @@
                     <form action="update_product" method="post">
                         <div class="modal-header">						
                             <h4 class="modal-title">Edit Product</h4>
+                            	
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            
                         </div>
                          <div class="modal-body">	
                          <div class="form-group">
                                 <label>Id</label>
-                                <input name="productId" type="text" value="hahaha" class="form-control" required>
+                                <input name="productId" type="text" value="${detail.productId }" class="form-control" required>
                             </div>				
                             <div class="form-group">
                                 <label>Name</label>

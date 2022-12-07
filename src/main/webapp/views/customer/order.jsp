@@ -37,20 +37,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${sessionScope.cart }" var="map">
+                    <c:forEach items="${list_orders}" var="list_o">
                         <tr>
-                            <td><img class="img-reponsive" width="80px" height="80px" src="${map.value.product.productImage }" /> </td>
-                            <td>${map.value.product.productName }</td>
-                            <td>In stock</td>
+                            <td><img class="img-reponsive" width="80px" height="80px" src="${list_o.product.productImage }" /> </td>
+                            <td>${list_o.product.productName }</td>
+                            <td>${list_o.order.orderDate }</td>
                             <td>
                             <div class="form-group d-flex justify-content-between">
                         
-                            		<input class="form-control" type="text" value="${map.value.quantity }" />
+                            		<input class="form-control" type="text" value="${list_o.quantity }" />
                             	
                             </div >
                             </td>
-                            <td class="text-right">${map.value.product.price*map.value.quantity } VND </td>
-                            <td class="text-right"><a href="remove_from_cart?productId=${ map.value.product.productId}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
+                            <td class="text-right">${list_o.product.price*list_o.quantity } VND </td>
+                            <td class="text-right"><a href="#?productId=${ list_o.product.productId}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
                         </tr>
                         </c:forEach>
                         <tr>

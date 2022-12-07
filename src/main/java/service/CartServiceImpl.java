@@ -9,8 +9,8 @@ import entity.Order;
 public class CartServiceImpl implements ICartService{
 	ICartDao cartD = new CartDaoImpl();
 	@Override
-	public void insert(Order cart) {
-		cartD.insert(cart);
+	public int insert(Order cart) {
+		return cartD.insert(cart);
 		
 	}
 

@@ -10,18 +10,18 @@ public class CartItemServiceImpl implements ICartItemService{
 	ICartItemDao cartItemDao = new CartItemDaoImpl();
 	@Override
 	public void insert(OrderDetail cart) {
-		OrderDetail oldOd = cartItemDao.get(cart.getOdId());
-		oldOd.setOrder(cart.getOrder());
-		oldOd.setProduct(cart.getProduct());
-		oldOd.setUnitPrice(cart.getUnitPrice());
-		oldOd.setQuantity(cart.getQuantity());
-		cartItemDao.insert(oldOd);
+		cartItemDao.insert(cart);
 		
 	}
 
 	@Override
 	public void edit(OrderDetail cart) {
-		cartItemDao.edit(cart);
+		OrderDetail oldOd = cartItemDao.get(cart.getOdId());
+		oldOd.setOrder(cart.getOrder());
+		oldOd.setProduct(cart.getProduct());
+		oldOd.setUnitPrice(cart.getUnitPrice());
+		oldOd.setQuantity(cart.getQuantity());
+		cartItemDao.edit(oldOd);
 		
 	}
 
@@ -41,6 +41,12 @@ public class CartItemServiceImpl implements ICartItemService{
 	public List<OrderDetail> getAll() {
 		// TODO Auto-generated method stub
 		return cartItemDao.getAll();
+	}
+
+	@Override
+	public List<OrderDetail> getByCusId(int id) {
+		// TODO Auto-generated method stub
+		return cartItemDao.getByCusId(id);
 	}
 
 }

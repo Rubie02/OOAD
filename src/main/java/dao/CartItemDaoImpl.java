@@ -116,6 +116,39 @@ public class CartItemDaoImpl extends DBConnection implements ICartItemDao{
 		}
 		return null;
 	}
+	public List<OrderDetail> getByCusId(int id) {
+		List<OrderDetail> list = new ArrayList<OrderDetail>();
+		String query = "SELECT odId, quantity, unitPrice, Orders.orderId, Orders.orderDate, Products.productName, Products.price, Products.productImage\r\n"
+				+ "FROM OrderDetails INNER JOIN Orders ON OrderDetails.orderId=Orders.orderId\r\n"
+				+ "INNER JOIN Products ON OrderDetails.productId=Products.productId\r\n"
+				+ "WHERE Orders.cusId=?";
+		try {
+			conn = new DBConnection().getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Customer cus=cusS.get(rs.getInt(id));
+				
+				Order cart = new Order();
+				Product pro = new Product();
+				OrderDetail cartItem = new OrderDetail();
+				cart.setCusId(cus);
+				cart.setOrderDate(rs.getString("orderDate"));
+				pro.setProductName(rs.getString("productName"));
+				pro.setPrice(rs.getFloat("price"));
+				pro.setProductName(rs.getString("productImage"));
+				cartItem.setOrder(cart);
+				cartItem.setProduct(pro);
+				cartItem.setQuantity(rs.getInt("quantity"));
+				cartItem.setUnitPrice(rs.getFloat("unitPrice"));
+				list.add(cartItem);
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	@Override
 	public List<OrderDetail> getAll() {

@@ -86,7 +86,8 @@ public class SignupCusControl extends HttpServlet {
         	}
         	else
         	{
-        		response.sendRedirect("/views/customer/home.jsp");
+        		request.setAttribute("notification", "Username existed!");
+        		request.getRequestDispatcher("/views/customer/signup.jsp").forward(request, response);
         	}
         }
     }

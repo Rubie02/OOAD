@@ -18,22 +18,29 @@ public class CartDaoImpl extends DBConnection implements ICartDao{
 	ResultSet rs = null;
 	ICustomerService cusS = new CustomerServiceImpl();
 	@Override
-	public void insert(Order cart) {
-		String query="INSERT INTO Orders(orderId, cusId, orderDate, employeeId) VALUES(?,?,?,?)";
+	public int insert(Order cart) {
+		String query="INSERT INTO Orders(cusId, orderDate, employeeId) VALUES(?,?,?)";
 		try {
 			conn = new DBConnection().getConnectionW();
-			ps=conn.prepareStatement(query);
-			ps.setInt(1,cart.getOrderId());
-			ps.setInt(2,cart.getCusId().getCusId());
-			ps.setString(3,cart.getOrderDate());
-			ps.setInt(4,cart.getEmployeeId().getEmployeeId());
+			ps=conn.prepareStatement(query, ps.RETURN_GENERATED_KEYS);
+			ps.setInt(1,cart.getCusId().getCusId());
+			ps.setString(2,cart.getOrderDate());
+			ps.setInt(3,cart.getEmployeeId().getEmployeeId());
 			ps.executeUpdate();
 			
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+			rs.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			return 0;
 		}
+		return 0;
 	}
+	
 
 	@Override
 	public void edit(Order cart) {

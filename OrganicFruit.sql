@@ -195,7 +195,6 @@ SELECT * FROM Employees
 INSERT INTO Orders(orderId , cusId, orderDate, employeeId) VALUES(3, 1, GETDATE(), 1)
 INSERT INTO Orders(cusId, orderDate, employeeId) VALUES(2, GETDATE(), 1)
 UPDATE Orders set cusId=2, orderDate=GETDATE() WHERE orderId=2
-DELETE FROM Orders WHERE orderId=2
 SELECT orderId, orderDate, Customers.cusId, cusAddress, cusPhoneNumber, username, rank
 FROM Orders INNER JOIN  Customers ON Orders.cusId=Customers.cusId
 WHERE orderId=3
@@ -211,7 +210,7 @@ WHERE odId=3
 SELECT * FROM OrderDetails
 DELETE FROM OrderDetails WHERE odID=4
 
-SELECT odId, quantity, unitPrice, Orders.orderId, Orders.orderDate, Products.productName, Products.price, Products.productImage
+SELECT odId, quantity, unitPrice, Orders.orderId, Orders.cusId, Orders.orderDate, Products.productName, Products.price, Products.productImage
 FROM OrderDetails INNER JOIN Orders ON OrderDetails.orderId=Orders.orderId
 INNER JOIN Products ON OrderDetails.productId=Products.productId
-WHERE OrderDetails.odId=2
+WHERE Orders.cusId=2
