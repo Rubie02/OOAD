@@ -213,11 +213,11 @@ VALUES(N'Kiwi vàng Zespri hộp 500g',3,2,N'Kiwi vàng Zespri là loại trái 
 SELECT * FROM Products
 
 INSERT INTO Review(product_id,name,email,content,created) 
-	VALUES (10,'Kim Vy','kimvy@gmail.com',N'An toàn, sạch sẽ!','2022-10-10');
+	VALUES (1009,'Kim Vy','kimvy@gmail.com',N'An toàn, sạch sẽ!','2022-10-10');
 INSERT INTO review(product_id,name,email,content,created) 
-	VALUES (9,'Kim Vy','kimvy@gmail.com',N'Sản phẩm chất lượng','2022-10-11');
+	VALUES (4,'Kim Vy','kimvy@gmail.com',N'Sản phẩm chất lượng','2022-10-11');
 INSERT INTO review(product_id,name,email,content,created) 
-	VALUES (12,'Kim Vy','kimvy@gmail.com',N'Ngon, lần sau tôi sẽ mua tiếp','2022-10-12');
+	VALUES (1012,'Kim Vy','kimvy@gmail.com',N'Ngon, lần sau tôi sẽ mua tiếp','2022-10-12');
 SELECT * FROM Review
 
 INSERT INTO Customers(cusName, cusAddress, cusPhoneNumber, rank, username) VALUES(N'Huynh Gia Bao', N'HCM', N'0324342564', 0, N'bao')
@@ -253,3 +253,19 @@ SELECT odId, quantity, unitPrice, Orders.orderId, Orders.cusId, Orders.orderDate
 FROM OrderDetails INNER JOIN Orders ON OrderDetails.orderId=Orders.orderId
 INNER JOIN Products ON OrderDetails.productId=Products.productId
 WHERE Orders.cusId=2
+
+SELECT Accounts.username, password, email, cusName, cusAddress, cusPhoneNumber
+FROM Accounts INNER JOIN Customers ON Accounts.username=Customers.username
+
+-- Trigger create customer when create new account
+CREATE TRIGGER dbo.Customerss
+ON dbo.Accounts
+AFTER INSERT
+AS
+BEGIN 
+		DECLARE @username NCHAR(30)
+		SELECT @username = Inserted.username FROM INSERTED
+		INSERT INTO dbo.Customers(username)
+		VALUES(@username)
+END
+GO
